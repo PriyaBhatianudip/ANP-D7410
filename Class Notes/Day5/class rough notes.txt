@@ -1,0 +1,75 @@
+count number of digits
+n = 124
+while(n>0) 0>0
+{
+	count++;  // count= 0 1 2 3
+	n/=10;// 124/10= 12/10=1/10=0
+}
+
+Q2. wap to reverse a number.
+input :  12345
+output : 54321
+ n=12345;
+
+rev=0
+for(int x=n;x>0;x/=10)
+{
+	int m= x%10;   // m= 12345%10=5
+	rev= rev*10+m;	
+}
+dry run
+--------
+input number from user , n=12345
+
+1. get the last digit of the number ,
+m= 12345%10= 5
+rev = rev*10+5 =   0*10+5= 5
+x=x/10=  12345/10= 1234
+if 1234>0  true
+m= 1234%10= 4
+rev = rev*10+5 =   0*10+5= 5*10+4=54
+x=x/10=  12345/10= 1234/10=123
+if 123>0 true
+m= 123%10= 3
+rev = rev*10+5 =   0*10+5= 54*10+3=543
+x=x/10=  12345/10= 123/10=12
+
+------------------------------------
+Password strength checker
+--------------------------
+1. password should be of minimum 8 characters long.
+2. it should contain at least one capital, small alphabet
+3. it should contain at least one digit, one special character.
+4. provide user 3 attempts only. 
+
+input:  "Abc#1234"  
+Output : Password is strong
+----------------------
+String pass="Avc#1234";
+int n = str.length();
+
+			check for length if true
+
+				int upper=0, lower=0, num=0, special=0;
+	     012345		loop index=1 index to last index
+ 				char ch =  str.charAt(index); // v
+
+check alphabets in lower case : if  ch>= 'a' && ch<='z'
+					lower++; 0 1
+check alphabets in upper case : else if  ch>= 'A' && ch<='Z'	
+					upper++;  0 1
+check for numbers : 		else if ch>='0' && ch<='9'
+					num++;
+check for special characters : 	else 
+					special++;
+
+			loop will end here
+			if lower>0 && upper>0 && num>0 && special>0
+				password is strong
+			else
+				re-enter the password.
+
+
+
+
+
