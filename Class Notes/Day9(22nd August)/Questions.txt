@@ -1,0 +1,19 @@
+Questions
+Q1. write a function to rotate an array clockwise.
+Q2. write a function to rotate an array anti clockwise.
+Q3. Write a function to insert a value at first index.
+0	1	2	3	4	5
+10	20	30	
+100	10	20	30
+The new value will come at the first index.
+we will not loose any existing value.
+
+newvalue=100
+step1: shift the values clockwise
+step2: insert new value at first index
+
+Q4. Write a function to delete the last value from array
+0	1	2	3	4	5
+10	20	30	
+after deletion
+10	20	0	0	0	0
