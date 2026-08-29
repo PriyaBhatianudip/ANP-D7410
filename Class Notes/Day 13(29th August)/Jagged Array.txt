@@ -1,0 +1,35 @@
+Jagged Array
+-------------
+An array where each row has different number of columns,
+is known as  a jagged array.
+it supports real time scenarios. For example
+- Every person can have multiple mobile numbers
+- Each person can have multiple certificates
+- every state has different number of cities.
+
+Syntax
+datatype arrayname[][]=new datatype[rows][];
+
+To define the number of columns for each row,
+arrayname[rowindex] = new dataype[col-size];
+
+Q. Create a int jagged array by inputting values from user.
+-  you need to input number of columns differently.
+-  print all the prime numbers from this jagged array.
+
+
+Real-time scenario
+------------------
+1.Suppose you have a list of all the states in a one-d array.
+2. create a jagged array with name of cities state-wise in each row:
+Example 
+={"Haryana", "Punjab"}
+={ 
+   {"Gurgaon","Rohtak","Faridabad","Panipat"}
+   {"Amritsar","Chandigarh","Abohar","Pathankot",...}
+}
+Task:-
+1.  input state name and accordingly show all the city names.
+2.  input city name and find its state name.
+
+

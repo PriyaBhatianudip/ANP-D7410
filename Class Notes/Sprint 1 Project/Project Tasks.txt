@@ -1,0 +1,7 @@
+1. Problem Statement :  describes that 
+		- what we have 
+		- what we need to develop
+		- what is required to develop it
+		- what can be final outcome
+		- what can be the future scope
+2nd-September(Wednesday) - Problem Statement

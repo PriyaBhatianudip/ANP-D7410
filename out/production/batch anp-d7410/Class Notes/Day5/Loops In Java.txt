@@ -1,0 +1,58 @@
+Loops In Java 
+--------------
+Loops are used to repeat a set of instructions until a given condition is satisfied(True).
+Once the condition is false, it will exit the loop.
+There are four types of loops in Java:-
+1. for loop :  for loop is used to repeat statements until it reaches the
+end value. for loop has three parts:-
+	Syntax:
+		for(initial value;condition;inc/dec)
+		{
+			Statements
+		}
+	initial value:  from where the loop will start
+	condition:  control statement which decides upto which value the loop will run.
+	inc/dec :  it is used for the continuity of the loop, which enables the loop control value 	to Increment or decrement. 
+		for(;;){}
+2. while loop :  it is entry control loop, which checks the condition initially , if the condition is false, then the loop will not run.
+	Syntax:
+
+		initial value;
+		while(condition)
+		{
+
+			inc/dec
+		}
+
+3. do while loop:  : it is also known as exit control loop. it is similar to while loop. the only difference is that, it checks the condition once the iteration is finished. 
+	syntax:
+		do
+		{
+			statements
+			inc/dec
+		}while(condition);
+
+
+4. for each loop :  it is specially arrays, collections etc. it takes the first value as the initial value and starts the loop. After every iteration, it automatically takes the next value in array or collection and runs the loop, until all the values are traversed.
+	for(datatype varname:objname)
+	{
+		statement
+	}
+Example:
+
+	int arr[]={10,20,30,40,50};
+	for(int n: arr) // n=10 20 30
+	{
+		System.out.println(n);
+	}
+
+5. nested loops :  when we use one loop inside another loop, that is known as nested loops.
+	loop construct()
+	{
+		loop construct()
+		{
+
+		}
+	}
+
+

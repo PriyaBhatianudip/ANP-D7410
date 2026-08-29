@@ -1,0 +1,33 @@
+matrix multiplication
+	0	1	2
+0	1	2	3			1	2	3
+1	4	5	6			4	5	6
+2	7	8	9			7	8	9
+
+
+c =  1*1 +2*4+3*7	1*2+2*5+3*8	1*3+2*6+3*9
+     4*1+5*4+6*7	4*2+5*5+6*8	4*3+5*6+6*9
+
+     00*00 + 01*10 + 02*20   00*01+01*11+02*21	00*02+01*12+02*22
+     10*00 + 11*10 + 12*20
+     	
+	A[R] =  9 multiplications
+        A[C] =  changing in every multiplication but reset after 3rd to 0 again
+	B[R] =  changing in every multiplication but reset after 3rd to 0 again
+	B[C] =  same for 3 multiplications after than increments to next value
+
+	for(int r=0;r<a.length;r++)// 9 times
+	{
+		for(int c=0;c<a[r].length;c++)// 3 times
+		{
+			multi[r][c]=0;
+			for(int m=0;m<a.length;m++)// every multi
+			{
+				multi[r][c]+=a[r][m]*b[m][c];
+			}
+		}
+	}
+
+
+
+

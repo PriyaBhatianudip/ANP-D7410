@@ -1,0 +1,83 @@
+OOPs(Object Oriented Programming)
+----------------------------------
+A programing language which writes all its code around an object. 
+In real world, we have several objects which have features, attributes
+etc with them. For example a shop can be treated as an object.
+Then the attributes(variables) for this shop will be its name, location,
+address, type, owner, area, phone number etc.
+features/functions: what functions that shop can perform will be treated
+as its features.
+Class :  it is a blueprint of an object. it defines what an object can
+hold, and what it can perform.
+object : it is an instance of a class. it represents what a class can 
+do or perform. 
+Example:-
+	class FirstDemo
+	{
+		int a;
+		static b=100;
+		public void calculateNumbers()
+		{
+		}
+	}
+
+	ob->  a=100, calculateNumbers(); b=b+200= 300
+	ob2->  a, calculateNUmbers();  b=300
+Syntax:
+To create an object :  classname obname=new classname(parameters);
+
+-------------------------------------------
+static variable:  they are class level variables. the memory for these static variables
+gets initialized when a class loads into the memory. Static variables do not create a copy
+into the objects. 
+		Google page(visitor count=100, total count=103)
+		server creates a copy and send it to the user
+	Ritik(google page, visitor count=101, total count=102),     Priyanshu(google page, visitor count=102, total count=102)
+Q. Define static methods and static blocks, static norms.
+-----------------------------------------------------------
+classname obname=new classname(parameters);
+
+new keyword : memory allocation. it is used to allocate memory to the object.
+classname() :  it calls the constructor of the class. when we write this line with new keyword, constructor returns the size of the class, number of variables.  
+Constructor : It is an initializer of a class object. Every java class has a default constructor. Constructor name is similar to its classname. It is a special type of method which is named after the classname, and it does not return any value.
+When we define a constructor in a class, then it overrides the default constructor.
+Default task of a constructor is to initialize class variables  and allocate memory for objects. But in customized constructor, we can write code, which should run when an object is being created.
+
+=> Entity class: it defines a single object, upon which we will be creating the entire projects. 
+class UserAccount
+{
+	private int accountno;
+	private String acname;
+	private String type;
+	private float balance;
+	private userpin;
+
+	public UserAccount()
+	{}
+
+	public UserAccount(parameters)
+	{
+		code
+	}
+	getter/setter functions
+	public void setAccountNo(int accountno)
+	{
+		this.accountno=accountno;
+	}
+	public int getAccountno()
+	{
+		return accountno;
+	}
+
+	public String toString()
+	{}
+}
+-> getter :  to return a value 
+-> setter : to set the value of variable
+-> toString(): it is also the default method of every java class.
+-> constructors: every entity class should have a default and
+parameterized constructor.
+
+
+
+
