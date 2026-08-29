@@ -60,7 +60,7 @@ a[2] = a[1]  =20
 a[1] = a[0]  =10
 Step3 : store the value of temp at a[0]
 a[0]=temp;
-
+a=b
 Q1. write a function to rotate an array clockwise.
 Q2. write a function to rotate an array anti clockwise.
 Q3. Write a function to insert a value at first index.

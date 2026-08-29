@@ -1,0 +1,62 @@
+Loops
+Q1. Write a program to create following pattern
+
+    1       1 time
+   2 2      2 times
+  3 3 3         3 times
+ 4 4 4 4       4times
+5 5 5 5 5   5 times
+for(int r=1; r<=rows;r++) r=1 2 3
+	for(int s = rows-1; s>=r;s--)4 3
+		sout(" ");
+	for(int n=1;n<=r;n++) // n=1 n<=2
+		if(n==1 || n==r ||n==rows)
+			sout(r+" ");
+		else
+			sout("  ");
+	System.out.println();
+
+
+12345
+1234
+123
+12
+1
+
+rows = 5
+    1
+   2
+  3
+ 4
+5
+
+space 
+row 1 :  spaces =rows-1=4
+row 2 :  space = 3
+row 3 :  space = 2
+row 4 :  space = 1
+row 5 :  space = 0
+     for(int r=1; r<=rows;r++) r=1 2 3
+	for(int s = rows-1; s>=r;s--)4 3
+		sout(" ");
+	for(
+    dry  run
+	r= 1 r<=rows(5)
+		s=rows-1(5-1=4)  s >= r(4>=1)  True print space
+		s=4 3  check s>=r(3>=1) True  print space
+		s= 3 2 check s>=1(2>=1) True print space
+		s= 2 1 check s>=1(1>=1) True print space
+		s= 1 0 check s>=1(0>=1) False exit loop(s loop)
+	r=2  r<=rows(5)
+		s=4 s>=r(2) s >= r(4>=2)  True print space
+		s=4 3  check s>=r(3>=2) True  print space
+		s= 3 2 check s>=1(2>=2) True print space
+		s= 2 1 check s>=1(1>=2) false 
+	r=3
+		r<=rows(5)
+		s=4 s>=r(3) s >= r(4>=3)  True print space
+		s=4 3  check s>=r(3>=3) True  print space
+		s= 3 2 check s>=1(2>=3) false 
+
+	
+

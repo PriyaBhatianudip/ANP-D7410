@@ -1,0 +1,17 @@
+// write a program to create a string array. array should have 10 records
+// initially input only n records
+101	Jai	jai@1123	delhi
+102	Karan	kk@1334		haryana
+
+
+// create a function to edit password if id is correct. 
+for changing password
+- first is password length
+- must contain at least one character of type(number, alphabet, special character)
+- if password is not correct, then provide max 3 attempts.
+
+// create a method to change state(create an array of all states)
+	- check if user is providing valid state name or not.
+// create a menu based program to get user's choice of operation.
+
+

@@ -1,6 +1,7 @@
 Questions
 Q1. write a function to rotate an array clockwise.
 Q2. write a function to rotate an array anti clockwise.
+
 Q3. Write a function to insert a value at first index.
 0	1	2	3	4	5
 10	20	30	
