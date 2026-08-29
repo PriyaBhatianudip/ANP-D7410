@@ -1,0 +1,20 @@
+Smart Parking System	Parking slots, vehicle entry/exit, fees, availability	
+PG/Hostel Management	Rooms, tenants, rent, complaints, vacancies	
+Movie Theatre Booking	Shows, seats, booking, cancellation, billing	
+Gym Management System	Members, plans, trainers, attendance, payments	
+Bike/Scooter Rental System	Vehicles, customers, rental duration, billing	
+Emergency Ambulance System	Ambulances, hospitals, patients, availability	
+Courier Tracking System	Parcels, customers, delivery agents, tracking status	
+Home Service Platform	Electricians/plumbers, bookings, payments, ratings	
+Co-working Space Manager	Desks, meeting rooms, memberships, bookings	
+Campus Event Manager	Events, registrations, participants, certificates	
+EV Charging Station	Charging slots, vehicles, charging duration, bill	
+Travel Itinerary Planner	Trips, destinations, hotels, activities, budget	
+Pet Care Management	Pets, owners, appointments, vaccinations, services	
+Office Cafeteria System	Menu, employees, orders, meal subscriptions	
+Gaming Tournament Manager	Players, teams, matches, scores, rankings	
+Event Ticketing System	Events, seats, tickets, cancellation, revenue	
+Apartment Society Manager	Residents, maintenance, complaints, visitors	
+Local Delivery Dispatcher	Orders, delivery agents, routes, status	
+Personal Finance Tracker	Income, expenses, categories, budgets	
+Freelancer Marketplace	Freelancers, clients, projects, payments, ratings	
