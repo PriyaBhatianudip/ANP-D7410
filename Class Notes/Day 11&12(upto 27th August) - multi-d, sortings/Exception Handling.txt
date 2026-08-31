@@ -1,0 +1,63 @@
+Exception Handling
+-------------------
+Q1. What is an exception?
+Answer :  An exception can be any unwanted or unexpected event that occurs during execution of the program and interrupts the normal flow and exits the running of program, that is known as exception.It can be a logical error, or input error.
+Exceptions are recoverable.
+For Example:  ArrayIndexOutOfBounds, ArithmaticException
+
+Q2. What is an Error?
+Error are serious problems, like system failure, memory failure, 
+runtime exceptions etc.. due to which program is not working or running.
+Errors can't be handled by exception handling.
+Errors are unrecoverable. the system will terminate if any error is coming
+
+
+Exception 
+- checked exceptions:  it happens at compile time when the source code is getting converted into byte code. it is checked by compiler. they needs to be handled at compile time by using any of the given mechanism in java exception handling.
+
+- unchecked exceptions :  these type exceptions come at the runtime.   they come due to any logical issue, input error, file not found etc
+they need to be handled manually by using exception handling.
+
+		Object
+		   |
+		Throwable
+		/	\
+	     Exception	Error
+		|
+	    RuntimeException
+	    /	    |       \
+	Arithmetic  Null    ArrayIndexOutOfBounds
+	Exception   pointer
+
+
+
+Exception Handling tools
+-------------------------
+1. try : try block will contain the code which can generate an exception. But it has to be used with either catch or finally block.
+try
+{
+	code
+}
+
+
+2. catch : it is used to handle an exception. In errorsome situations, it will be called whenever jvm encounters an exception. We can write code inside catch block which can be executed in case of exception. It is generally used for handling a particular type of exceptions. After handling the exception, jvm will move to the next set of statement.
+try{}
+catch(Exceptionclassname ob)
+{
+	code...
+}
+
+Questions:
+1. write a program to change the password. If user enters a password which contains any unwanted value or character then throw an exception and handle it.
+2. An online shopping application asks the customer to enter the quantity of a product.
+Enter quantity: abc
+handle this situation using exception handling.
+3. A student management system stores marks in an array:
+Ask the user to enter the subject number and display the corresponding marks.
+If the user enters a subject number that doesn't exist, handle the exception and display:
+
+
+3. finally
+4. throw
+5. throws
+
