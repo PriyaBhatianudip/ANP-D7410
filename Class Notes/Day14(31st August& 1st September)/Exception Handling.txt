@@ -137,7 +137,7 @@ class CustomException extends Exception
 }
 
 super(value):  it will call the constructor of parent class. 
-
+------------------------------------------------------
 Q. Online Shopping Quantity
 Write a program for an online shopping application.
 Ask the user to enter available stock.
@@ -148,9 +148,12 @@ Example:
 Enter available stock: 10
 Enter quantity: 15
 Insufficient stock.
-
+--------------------------------------
 Next Session
 ------------
 String Class, StringBuilder, StringBuffer
-String functions
+String functions.
+-------------------------------------
+
+
 

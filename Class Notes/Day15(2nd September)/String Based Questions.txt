@@ -1,0 +1,15 @@
+Q1. Reverse a string 
+input : Hello  olleH
+input : Hello World ->  dlroW olleH
+input : Hello World ->  olleH dlroW
+Q2. check whether a string is anagram or not.
+input :  silent   listen
+sb.reverse();
+
+if both strings contain same characters, then they are anagram
+Q3. check whether a string is palindrome or not.
+Q4. Count the number of words in a string.
+Q5. write a program to remove duplicate characters from a string.
+	input :  hello java output: helo jav
+Q6. find the longest word in a sentence.
+Q7. find the most frequent character in a string.
