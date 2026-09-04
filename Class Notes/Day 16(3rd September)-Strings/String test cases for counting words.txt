@@ -1,0 +1,35 @@
+str = "  8*java is object oriented programming ";
+
+1. determine the number of words in a string.
+2. create an array with length of words.
+2. split the string into a words array
+
+1. set up the count variable to 0.
+2. start accessing each character one by one.
+3. if ch==" ", increment count by 1.
+4. after the loop increment count one more time.
+
+Test case : if the string has leading white spaces
+i=0;
+while(str.charAt(i)==' ')
+	i++;
+boolean flag=false;
+for(;i<str.length();i++)
+{
+
+ 	   if(str.charAt(i)  == ' ')
+            {
+		if(flag==true)
+			continue;
+                count++;
+		flag=true;
+            }
+	    else flag=false;
+}
+
+if flag==false
+	count++;
+
+
+count =1   hello how   you hh    
+Test case :  if the string has trailing spaces. also if in beween words we have more than one spaces.
