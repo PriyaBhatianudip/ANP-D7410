@@ -1,0 +1,61 @@
+Inheritance In Java
+--------------------
+It enables a class to inherit another class properties for code reusability
+and better performance. Its one of the important concepts of OOPs.
+In Java, we have 3 types of Inheritance:-
+1. Single Inheritance : we can have one parent and one child class.
+2. Multi Inheritance : we have inherited classes in the form of a ladder
+	parent
+	  |
+	child
+	  |
+	child
+3. Multi child (hierarchical) : here we can have multiple child classes of a parent class.
+ 		parent
+		   |
+	------------------------
+	|	|	|	|
+	c1	c2	c3	c4
+
+-> a child class inherits the properties of its parent class. 
+-> to access the attributes or properties of a sibling class, a class has its object. same level classes don't inherit each other's properties.
+
+
+4. Multiple Inheritance : it is not allowed in java due to naming conflicts and ambiguity.
+
+
+Q. Why Java doesn't allow Diamond relationship?
+
+=> To inherit a class we use extends keyword
+
+class subclass extends parentclassname
+{
+
+}
+
+-> final keyword: it allows us to define class, methods, variables as final.
+	-> final class : if a class is defined final, then it can't be 
+			inherited.
+		final class demo
+		{}
+
+	-> final variable :  then the value of the variable can't be changed.
+				final variable has to be defined with a value.
+				but if we wan to initialize it later, then define the value in 					the constructor. it has to be the first line of your constructor.
+			final datatype varname=value;
+			final datatype varname;
+			constructor()
+			{
+				var=value;  final variable value
+			}
+
+	-> final method :  them the method can't be overridden.
+		final void methodname()
+		{
+			dfdf
+		}
+
+-> this :   it represents the current class object. To eliminate naming conflicts , when a method or constructor has the same name parameters as class variables, then we can use this keyword to recognize the class level variables. it can also be used to access same class
+methods or variables.
+
+-> super : it refers to the reference of parent class. it can be used to call parent class constructor, method or variable(if there is naming conflicts).
