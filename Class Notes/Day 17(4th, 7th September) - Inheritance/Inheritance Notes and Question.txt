@@ -1,0 +1,32 @@
+Inheritance
+-----------
+->  child class inherits the properties of the parent class
+->  child knows about all the attributes and methods of its parent class but parent class doesn't know about child class properties.
+->  But if the parent class has any private property(like variables, methods), then the child class can't access it.
+
+Types of Inheritance
+---------------------
+1. Single Inheritance
+2. Multi-level Inheritance
+3. Multi-child(hierarchical) inheritance
+---------------------------------
+Constructor Inheritance
+------------------------
+->  if a child class constructor is being called, then the parent constructor will also be called.
+->  then the flow of the programs will be from parent to child classes.
+->  if we have parameterized constructors, then we need to use super keyword to initialize parent class constructor with values.
+
+Question : to create a paymentsystem(parent class). bill calculation,(Receipt)
+		processPayment() 
+Then it will have 3 child classes,  ->  
+UPIPayment, CreditCardPayment, WalletPayment
+UPI Payment ->  processPayment()
+CreditCardPayment ->  processPayment()
+WalletPayment ->  processPayment()
+PaymentSystem is for GroceryMart
+list of items, price, total amount
+
+--------------------
+To convert a string(containing int,double,etc value)
+int n=Integer.parseInt(stringvalue);
+double d= Double.parseDouble(stringvalue);
