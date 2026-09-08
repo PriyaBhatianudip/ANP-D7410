@@ -1,0 +1,56 @@
+==   and equals method
+
+== :  if we are comparing two objects. then it compare the reference of both of the objects.
+equals(): it is a method of String class in Java. It is used to compare the contents of two string variables. It is case sensitive in nature. which means capital and small characters are different for it.
+-------------------------------------
+Dynamic Method Dispatch
+-----------------------
+
+		Payment  processpayment()
+		    |
+     ------------------------------------
+     |		     |			|
+UPIPayment      CreditCard           WalletPayment
+processpayment()	processpayment()	processpayment()
+
+It is used to overcome the problems of Method overriding.
+Using dynamic method dispatch, we can resolve the call to overridden methods at run time. It helps us to create less objects and reduce the code as well.  
+To solve this issue, here we will assign the reference of the child class in the parent class object. when we follow this approach, then the object only recognises the overridden methods of the child class.
+It is also known as late binding or dynamic binding.
+It is part of runtime Polymorphism.
+--------------------------------------------------
+Abstraction 
+-----------
+It hides the complexity and shows only the functionality.
+It shows what the program is doing but it will hide how that work is being done.
+It is part of OOPs. 
+
+It can be implemented in Java in two ways:-
+1. Interface  (Complete Abstraction)
+2. Abstract class (complete or partial abstraction)
+
+Interface
+----------
+it refers to a special type which allows us to create abstract methods. Abstract methods are those methods which only have declaration part of the method, but will not have the body. All the variables, which we create inside the interface, will be automatically declared as final variables.
+-> it is compulsory to override all the methods of interface in the child class.
+
+Syntax:
+public interface interfacename
+{
+	datatype varname;
+	public void methodname(parameters);
+	public returntype methodname(parameters);
+}
+
+
+=> to implement an interface in your class
+class classname implements interfacename, interfacename,....
+{
+
+}
+
+
+
+
+
+

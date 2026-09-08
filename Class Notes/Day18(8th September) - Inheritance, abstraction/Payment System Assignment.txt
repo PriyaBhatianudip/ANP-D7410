@@ -1,0 +1,16 @@
+		Payment
+		    |
+     ------------------------------------
+     |		     |			|
+UPIPayment      CreditCard           WalletPayment
+
+
+--------------------------------------
+-> whenever a new customer comes, new customer payment will be initiated.
+->  customer will add products to the card
+->  customer will click on the payment button
+->  Internally, the entire product list will be generated along with sales price, quantity, and product details
+-> the system will ask you to choose a particular payment method
+-> according to the chosen payment method , it will show you the details or ask you to provide additional values/details
+->  After validating the user details, payment will proceed further and will be completed if the details are correct.
+-> then output screen will show "Payment Successful"
