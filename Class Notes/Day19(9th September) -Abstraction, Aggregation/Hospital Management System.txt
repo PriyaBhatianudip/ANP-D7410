@@ -1,0 +1,25 @@
+-------------------------------------------
+Hospital Management System
+--------------------------
+1. Doctor
+2. Nurse
+3. Patient
+4. Receptionist
+-> create different entity classes for all these entities.
+-> create an abstract class Person with common information
+	->  personId
+	->  name
+	->  age
+	->  phone
+->  create appropriate child class if necessary.
+-> create an abstract method  displayRole()
+-> create a class Hospital which aggregates doctors, nurses, patients.
+-> the hospital class must have these functions
+	->  add a doctor
+	->  add a patient
+	->  add a nurse
+	->  display all doctors
+	->  display all patients
+	->  display complete hospital information
+	->  show how different types of person perform the role.
+

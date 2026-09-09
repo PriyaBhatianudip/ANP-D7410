@@ -1,0 +1,36 @@
+Aggregation In Java
+-------------------
+Inheritance uses IS-A relationship
+But Aggregation uses HAS-A relationship.
+
+When a class has objects as instance variables, then it is known as aggregation. When we want to provide a sub part of an entity class which also has multiple values/properties, then we use aggregation to implement it.
+Example
+class Address
+{
+	private int houseno;
+	private String locality;
+	private String city;
+	private String state;
+	private int pin;
+
+	getter/setter methods
+	constructors
+}
+class Salary
+{
+	private double basicsalary, da,ta,pf,hra,totalsalary, netsalary;
+getter/setter methods
+	constructors
+
+}
+Class Employee
+{
+	private int id;
+	private String name;
+	private Address address;
+	private Salary salary;
+getter/setter methods
+	constructors
+
+}
+
