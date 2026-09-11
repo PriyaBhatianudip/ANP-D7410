@@ -1,0 +1,59 @@
+Java Stream API
+----------------
+-> It is a java 8 feature which is very useful.
+-> It is a functional approach to process collection of objects and arrays or any sequence.
+-> A stream is a sequence of elements supporting sequential and parallel aggregate operations.
+-> it is not a data structure and does not store elements, but conveys elements from a source through a pipeline of computational steps.
+
+Syntax:-
+[data source]->[intermediate operations]-> [Terminal Operations]
+
+-> data source:  it can be an array, collection object, string objects etc.
+-> Intermediate operations : it transforms data into a stream(sequence). They are lazy execution is deferred unit a terminal operation is invoked.
+->  Terminal Operation: it produces a non-stream result(eg. sum, values etc. ) and also keeps eliminating the values once their work is done.
+
+Operations:-
+1. filter  : it helps us to filter values by using a given condition.  ob.filter(x-> condition)
+						eg. ob.filter(x-> x>10)
+2. map  :  it transforms elements by applying a function.    ob.map(Non-primitive:: function)
+								eg. ob.map(String::toUpperCase)
+								.map(var -> formula/function)
+3. flatmap :  it flattens nested stream structures.        eg. ob.flatmap(List::streams)
+4. sorted : it sorts the elements by natural order or comparator. 					                           eg.   ob.sorted(Comparator.reverseOrder())
+5. distinct :  it removes the duplicate elements.   ob.distinct()
+6. peek :  it performs an action without modifying the elements.  ob.peek(action)->
+						eg.   ob.peek(System.out::println)
+7. collect :  it accumulates the elements into a result container. ob.collect(Collectors.toList())
+8. foreach :  it performs an action for each element.     ob.forEach(System.out::println)
+9. reduce :  it combines elements into a single summary value.    ob. reduce(index, Integer::sum)
+10. findFirst/findAny : it returns an optional of a matching element.  ob.findFirst()
+11. allMatch/anyMatch : it evaluates predicates against stream elements.
+				 ob.anyMatch(var->condition)
+---------------------------------------------------------------------------------
+Operations:-
+1. find all the names which are starting with 'A'.
+	->  create a list of names using arraylist
+	-> apply stream function to get all the names which are starting with A.
+2. find the names having more than  5 characters.
+
+3. find the square of all the numbers in an list of numbers.
+4. increment each value by 10%.
+5. sort elements in ascending order.
+
+6. find the total count, minimum value and maximum value.
+-> count(), max(), min()
+
+7. count the names which are starting with 'A'.
+8. count the names who have character 's' in them.
+
+Given:
+
+List<Integer> numbers = Arrays.asList(
+    10, 25, 30, 45, 50, 65, 70, 85, 90
+);
+
+Find the sum of all even numbers using Stream API.
+
+Expected: 250
+
+
