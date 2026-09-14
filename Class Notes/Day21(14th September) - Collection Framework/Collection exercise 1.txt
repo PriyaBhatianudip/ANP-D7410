@@ -1,0 +1,14 @@
+1. Create an entity class Employee
+	->  employee_id
+	->  employee_name
+	->  age
+	->  city
+	->  salary
+2. create another class EmployeeDao(DAO -Data Access Object)
+	->  Create an ArrayList of type Employee to store employee object.
+		ArrayList<Employee> emplist;
+	-> create methods to perform following operations
+		->  add a new employee
+		->  remove an employee
+		->  search an employee
+		->  Update an employee record

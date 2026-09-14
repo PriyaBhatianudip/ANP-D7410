@@ -1,0 +1,64 @@
+Collection Framework
+---------------------
+It is used to store group of objects.
+it uses heap memory to keep track of objects.
+It is inbuilt framework of java which provides us many
+inbuilt classes, interfaces, methods to work with data
+structures. 
+			Iterable interface
+				|
+			Collection Interface
+				|
+		____________________________________        Map, Property
+		|		|		   |
+		List(I)		Queue(I)	  Set(I)
+		^		  ^		    ^
+		|		  |		       -----------------
+		-ArrayList(c)    ---------             |		|
+		-LinkedList      |	  |            SortedSet      Hashset, 
+		-Vector         Deque(I)  PriorityQueue    |           LinkedHashSet
+		-Stack            |			 TreeSet
+				ArrayDeque
+---------------------------------------------------------------------
+List Interface
+---------------
+it is used to maintain similar type of data in an ordered way. It uses index-based access for the list elements. It allows duplications, it has an order which means it maintains insertion order.
+List interface provides many inbuilt methods to support almost all list operations.
+There are four child classes of List interface
+1. ArrayList :  It is a resizable array based list. It is used to store similar type of objects. It maintains the insertion order and allows to store duplicate values as well. Like arrays, we can access values using index as well
+
+Constructors
+Constructor	Description
+	1. ArrayList()	- Constructs an empty list with an initial capacity of ten.
+	2. ArrayList(Collection<? extends E> c) - Constructs a list containing the elements of the 	specified collection, in the order they are returned by the collection's iterator.
+	3. ArrayList(int initialCapacity) - Constructs an empty list with the specified initial 	capacity.
+
+
+2. LinkedList : It is double linked list implementation of both List and deque interface. It also maintains the insertion order and also allows you to add duplicate values. It stores values in node manner where each node can be stored in different locations and every node carries the address of previous and next node.
+
+	prev|data|next <--> prev|data|next <--> prev|data|next <--> prev|data|next
+Constructors
+	1. LinkedList()
+	2. LinkedList(Collectionob)
+
+3. Vector: It is an extension of arraylist. Internally it can do all the tasks of arraylist. it stores values in array like structure. it maintains the insertion order and also allows you to add duplicate values.
+		
+Constructors
+
+Vector() :Constructs an empty vector so that its internal data array has size 10 and its standard capacity increment is zero.
+Vector(Collection<? extends E> c) : Constructs a vector containing the elements of the specified collection, in the order they are returned by the collection's iterator.
+Vector(int initialCapacity): Constructs an empty vector with the specified initial capacity and with its capacity increment equal to zero.
+Vector(int initialCapacity, int capacityIncrement) : Constructs an empty vector with the specified initial capacity and capacity increment.
+
+4. Stack :  it is a legacy class that extends Vector and represents the LIFO(Last -In-First-out).
+it provides basic stack operations like push, pop, peek methods.
+-  Stack()
+
+
+----------------------------------------
+Iterator(): it is an object used to traverse or access elements of a collection one by one, without directly using indexing. 
+	it provides some functions to access all the elements or check on them:-
+		-> hasNext(): it returns true, if it has more values, otherwise it returns false
+		-> next(): it returns next element in iterator and also removes it from the list.
+		
+--------------------------------------------------
