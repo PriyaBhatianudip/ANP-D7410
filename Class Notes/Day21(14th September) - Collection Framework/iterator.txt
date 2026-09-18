@@ -1,0 +1,11 @@
+iterator(): it only moves forward
+ListIterator:  it can move in both direction forward/backwards. it is the child interface of the Iterator interface
+ListIterator<ClassName> ob= ob.listiterator();
+Methods:-
+1. hasNext():  it checks whether we have more elements or not
+2. next() :  it returns the current element from the list
+3. hasPrevious() :  it returns true if we have more elements in the previous place otherwise false. 
+4. previous() : it returns the previous element from object.
+5. add() :  to add elements to the object
+6. remove():  to remove an element from the object. usually it removes the last traversed element from the list either done by next() or previous()
+7. set() :  it replaces the last element returned by next() or previous() methods.

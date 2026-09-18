@@ -1,0 +1,9 @@
+Start Transaction 
+       |
+check wallet balance+compare balance with amount
+	|
+if balance<amount
+	|
+add amount to balance
+	|
+continue the transaction
