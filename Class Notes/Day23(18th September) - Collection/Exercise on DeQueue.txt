@@ -1,0 +1,14 @@
+A hospital has an emergency department where patients can be added from both ends of the waiting queue:
+Normal patients are added at the rear.
+Critical patients are added at the front.
+The patient at the front is treated first.
+After treatment, the patient is removed from the front.
+
+Answer
+step 0: create a queue
+Deque<String> queue = new Deque<String>();
+step1: understand the patient, whether he is a critical patient or normal patient
+
+step2: if that patient is critical, then add him in front of the queue, otherwise add him in the last of the queue.
+step3: start the treatment, whoever is at the front of the queue, will go for the treatment.
+step4: once the treatment is finished, remove him from the queue
