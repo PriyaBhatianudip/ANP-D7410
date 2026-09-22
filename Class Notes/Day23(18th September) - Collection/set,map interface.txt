@@ -1,0 +1,71 @@
+set interface
+-------------
+it is one of the important interface of java. 
+it only stores unique elements.
+it is fastest in terms of search operations.
+
+Set is the parent of :-
+1. HashSet :  it stores only unique elements. It doesn't maintain the insertion order. it doesn't sort the elements but allows to store one null value. Performance wise hash set is better than linked hashset. It uses hash table to maintain the values.
+2. LinkedHashSet : it stores only unique elements. It maintains the insertion order. it does not sort the elements but allows to store one null value. it uses hash table along with linked list to maintain the elements.
+3. TreeSet: it is the subclass of set interface, is used for storing only unique elements in sorted order. we can't store any null value.
+--------------------------------------
+Map Interface
+--------------
+It stores values in key-value pair. The key has to be unique for each value. But values can be duplicated. It is an unordered collection as every value will be fetched using its key. it can have one null value as key.
+
+Map<Classtype, classtype> ob;
+
+Map is inherited by  HashMap, LinkedHashMap, classes
+Map is also inherited by SortedMap-> NavigableMap-> TreeMap 
+
+
+Map<Integer, String> ob = new HashMap<Integer, String>();
+
+HashMap<Integer, String> ob = new HashMap<Integer, String>();
+
+Map<Integer, String> ob = new LinkedHashMap<Integer, String>();
+
+LinkedHashMap<Integer, String> ob = new LinkedHashMap<Integer, String>();
+
+
+=>  to add key-value pair into map
+		ob.put(key, value);
+
+=> to get a value :  ob.get(KEY);
+
+=>  to remove a key-value pair :  ob.remove(key);
+
+
+Object[] toArray
+
+if we have a set of Integers, how to convert this set values into an array of int type.
+
+--------------------------------------------------
+Maven Projects
+--------------
+Maven is an automation build tool which helps in creating java projects more efficiently. It is also known as Project Management tool.
+it helps in creating, building(set class files, co-ordinate in jar files), manage dependencies, testing, packaging, run java projects in a standalone way.
+
+Dependencies:
+<dependency>
+.....
+</dependency>
+
+maven project structure
+-----------------------
+ProjectName
+|---main package
+|     | - java package
+|     | - resources
+|---test
+|    | -  java package
+|
+|---pom.xml  (it will contain all decencies, plugin, settings info)
+
+
+
+
+
+
+
+ 
