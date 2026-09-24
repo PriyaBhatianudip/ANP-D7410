@@ -1,0 +1,125 @@
+Travel Itinerary Planner
+------------------------
+-  users
+- destination
+-  trips
+- day-wise itinerary 
+- placestovisit
+-  activities
+-  hotels
+- bookings
+- expenses
+- reviews
+
+2. destinations
+Stores major destinations.
+Column			Data Type	Constraint		
+destination_id		INT		PK, AUTO_INCREMENT	
+destination_name	VARCHAR(100)	NOT NULL		
+country			VARCHAR(50)	NOT NULL		
+state			VARCHAR(50)	—			
+description		VARCHAR(500)	—	
+best_time_to_visit	VARCHAR(100)	—	
+
+3. Places
+Column		Data Type	Constraint		Description
+place_id	INT		PK, AUTO_INCREMENT	Place ID
+destination_id	INT		FK			Destination
+place_name	VARCHAR(100)	NOT NULL		Tourist attraction
+place_type	VARCHAR(50)	—		Beach, Historical, Nature etc.
+entry_fee	DECIMAL(10,2)	DEFAULT 0	Entry fee
+rating		DECIMAL(3,2)	—		Rating
+
+4. activities
+Stores activities that can be performed at tourist places.
+Column		Data Type	Constraint		Description
+activity_id	INT		PK, AUTO_INCREMENT	Activity ID
+place_id	INT		FK		Place where activity occurs
+activity_name	VARCHAR(100)	NOT NULL		Activity name
+duration_hours	DECIMAL(4,2)	—			Duration
+cost		DECIMAL(10,2)	—			Activity cost
+difficulty	VARCHAR(30)	—			Easy/Medium/Hard
+
+CREATE TABLE activities (
+    activity_id INT PRIMARY KEY AUTO_INCREMENT,
+    place_id INT NOT NULL,
+    activity_name VARCHAR(100) NOT NULL,      
+    duration_minutes INT,
+    cost DECIMAL(8, 2) DEFAULT 0.00,           
+    description TEXT,
+    foreign key place_id references places(place_id) 
+);
+
+5. trips
+Stores trips created by users.
+Column		Data Type	Constraint		Description
+trip_id		INT		PK, AUTO_INCREMENT	Trip ID
+user_id		INT		FK			Trip owner
+destination_id	INT		FK			Destination
+trip_name	VARCHAR(150)	NOT NULL		Trip name
+start_date	DATE		NOT NULL		Starting date
+end_date	DATE		NOT NULL		Ending date
+budget		DECIMAL(12,2)	—			Planned budget
+status		VARCHAR(30)	DEFAULT			Trip status
+
+6. Itinerary 
+| Column         | Data Type    | Constraint         | Description       |
+| -------------- | ------------ | ------------------ | ----------------- |
+| `itinerary_id` | INT          | PK, AUTO_INCREMENT | Itinerary ID      |
+| `trip_id`      | INT          | FK                 | Trip              |
+| `day_number`   | INT          | NOT NULL           | Day 1, Day 2 etc. |
+| `visit_date`   | DATE         | NOT NULL           | Date              |
+| `place_id`     | INT          | FK                 | Place to visit    |
+| `activity_id`  | INT          | FK                 | Activity          |
+| `start_time`   | TIME         | —                  | Starting time     |
+| `end_time`     | TIME         | —                  | Ending time       |
+| `notes`        | VARCHAR(500) | —                  | Additional notes  |
+
+7. Hotels
+| Column            | Data Type     | Constraint         | Description    |
+| ----------------- | ------------- | ------------------ | -------------- |
+| `hotel_id`        | INT           | PK, AUTO_INCREMENT | Hotel ID       |
+| `destination_id`  | INT           | FK                 | Destination    |
+| `hotel_name`      | VARCHAR(150)  | NOT NULL           | Hotel name     |
+| `location`        | VARCHAR(150)  | —                  | Hotel location |
+| `rating`          | DECIMAL(2,1)  | —                  | Hotel rating   |
+| `price_per_night` | DECIMAL(10,2) | —                  | Room price     |
+
+8. hotel_bookings
+| Column           | Data Type     | Constraint         | Description     |
+| ---------------- | ------------- | ------------------ | --------------- |
+| `booking_id`     | INT           | PK, AUTO_INCREMENT | Booking ID      |
+| `trip_id`        | INT           | FK                 | Trip            |
+| `hotel_id`       | INT           | FK                 | Hotel           |
+| `check_in`       | DATE          | NOT NULL           | Check-in        |
+| `check_out`      | DATE          | NOT NULL           | Check-out       |
+| `rooms`          | INT           | DEFAULT 1          | Number of rooms |
+| `total_amount`   | DECIMAL(12,2) | —                  | Total cost      |
+| `booking_status` | VARCHAR(30)   | DEFAULT            | Booking status  |
+
+9. expenses
+| Column         | Data Type     | Constraint         | Description               |
+| -------------- | ------------- | ------------------ | ------------------------- |
+| `expense_id`   | INT           | PK, AUTO_INCREMENT | Expense ID                |
+| `trip_id`      | INT           | FK                 | Trip                      |
+| `expense_type` | VARCHAR(50)   | —                  | Food/Travel/Shopping etc. |
+| `description`  | VARCHAR(200)  | —                  | Expense details           |
+| `amount`       | DECIMAL(12,2) | —                  | Amount                    |
+| `expense_date` | DATE          | —                  | Expense date              |
+10. Trip_members
+| Column           | Data Type   | Constraint         | Description  |
+| ---------------- | ----------- | ------------------ | ------------ |
+| `trip_member_id` | INT         | PK, AUTO_INCREMENT | Record ID    |
+| `trip_id`        | INT         | FK                 | Trip         |
+| `user_id`        | INT         | FK                 | User         |
+| `role`           | VARCHAR(30) | DEFAULT            | Owner/Member |
+11. reviews
+
+| Column           | Data Type    | Constraint         | Description |
+| ---------------- | ------------ | ------------------ | ----------- |
+| `review_id`      | INT          | PK, AUTO_INCREMENT | Review ID   |
+| `user_id`        | INT          | FK                 | Reviewer    |
+| `destination_id` | INT          | FK                 | Destination |
+| `rating`         | INT          | CHECK 1–5          | Rating      |
+| `comment`        | VARCHAR(500) | —                  | Review      |
+| `review_date`    | DATE         | DEFAULT            | Review date |

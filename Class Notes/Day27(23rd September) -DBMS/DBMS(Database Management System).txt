@@ -1,0 +1,57 @@
+DBMS(Database Management System)
+--------------------------------
+It is used for create, manage the data in the form of tables, views, stored procedures etc.
+It helps us to maintain relationship between multiple tables.
+-----------------------------------------------
+Database:
+----------
+Database is used for storing multiple types of data in the structured form(tables).
+
+Tables:
+-------
+it is a collection of rows and columns.
+Tables stores data into a structured form and also maintains the data integrity and normality.
+
+ACID  Properties of database/dbms
+-----------------------------------
+A - Automicity :  All operations in a transaction happen or none do. If one transaction falls apart, then the whole process rolls back(stops/reversed).
+C - Consistency :  The database moves from one valid state to another. All the rules and constraints must remain intact or same.
+I - Isolation : As various transactions run separately in a DBMS, it ensures that they do not interfere with each other.
+D - Durability : Once a transactions is saved or executed, the changes it has made will be permanant even if the system crashes in future.
+-----------------------------------------
+-  to create a database  :
+create database dbname;
+- to start working in a database:-
+	use dbname;
+- to create a table:-
+create table tablename(colname datatype(size) constaint,colname datatype(size) constaint,colname datatype(size) constaint,colname datatype(size) constaint);
+
+---------------------------------
+Data types:-
+------------
+int/tinyint/longint/mediumint - numbers
+2. varchar/char/text/tinytext(255 bytes)/mediumtext/longtext :
+to store characters.
+3. floor/double/decimal :  to store decimal type values.
+4. blob/tinyblob/mediumblob/longblob for binary format(audio, video, pdf, docx etc)
+to store images/files/videos
+5. Enum : it will store a set of objects.
+6. json: to store json values
+---------------------
+Constraints
+-----------
+They are used to apply some rules to the columns, so that whenever we receive some sort of data, it should be correct and error free.
+Primary Key : Primary key is a special type of key which restricts the flow of data in our table. it allows us to create a column which should not have any duplicate values, null values, and should have a unique value. We can have only one Primary key in a table. For Example, studentid, rollno, employeeid etc.
+notnull : it allows us to create a column with not null  values. we can't leave this column blank for any record.
+unique : it ensures that all the values are unique/non-repetitive.
+Foreign key : it works as a reference column for other tables. it is used to create /maintain relationship between two tables.
+create table tablename(col1, col2,....,
+foreign key(colname) references tablename(colname))
+alter table tablename add colname datatype foreign key(colname) references tablename(colname);
+alter table tablename set foreign key(colname) references tablename(colname));
+
+5. check : it ensures that whatever values we are storing in this particular column should be following the given rule. otherwise it will reject the data.
+create table tablename(col1 datatype check condition)
+create table employee(id..., name..., age check
+
+6. default : it provides a default value for each record, if the value is not provided while inserting the record.

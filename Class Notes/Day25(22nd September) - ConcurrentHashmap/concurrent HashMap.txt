@@ -1,0 +1,46 @@
+concurrent HashMap
+------------------
+it stores values in key-value pairs.
+it doesn't allow null value in neither key nor value.
+It implements Map and ConcurrentMap inerfaces
+It is thread-safe, means if multiple threads are trying to access the same resource, then it will conflict free.
+Thread1 -> employee 1 -> update salary
+Thread2 -> employee 2 -> add employee
+Thread3 -> employee 3 -> remove employee
+In hashmap if we are having multiple threads which are performing different tasks over the same hashmap, then it can lead to thread safety problems.
+Concurrent HashMap is specifically designed to handle such situations. its retrieval operations  as get() generally do not block while updates are happending.
+
+Syntax
+ConcurrentHashMap<classname1, classname> ob= new ConcurrentHashMap<>();
+
+To add a new key-value pair:-
+put(): it is used to add a new key-value pair.
+example
+ob.put(key, value);
+
+-------------------------------------------------------
+Properties
+----------
+It is the inbuilt class of java. It is the specialized type of Hashtable.
+it allows us to store values in key-value pairs.
+it allows heterogeneous data. which means we can store any type of value or key in the dataset.
+Syntax
+Properties ob=new Properties();
+
+to add a new key-value pair
+ob.setProperty(key, value);
+
+to get a value
+ob.getProperty(key);
+
+->  ob.remove(key); ->it returns and remove the value
+
+search option  based on key ->  ob.containsKey(key);  true/false
+search value ->  ob.containsValue(value);  true/false
+
+
+
+
+
+
+
