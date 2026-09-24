@@ -1,0 +1,72 @@
+Constraints
+-----------
+These are used for applying some rules on the columns. 
+like if we don't we store any null value in a particular column,
+then we will use not null, 
+no duplicate values :  unique
+single column to be treated as an identity column, a column 
+with unique values and not null -  primary key
+a column with auto increment feature in numbers - auto_increment
+to apply a particular condition - check condition eg
+	age int check age>=18
+-> default :  if you want to store default value, when no value is 
+provided ,   default value
+->  foreign key :  it is used when we want to link one table with another.
+Employee 
+id name age salary deptid(FK)
+
+department
+deptid(PK)  deptname managername numberofemployees
+
+parent table
+create table department(dept_id int primary key, deptname varchar(50) not null, managername varchar(50), nemployees int);
+child table
+create table employee(empid int primary key auto_increment, empname varchar(50), age int,
+salary float, deptid int, foreign key (deptid)  references department(deptid));
+
+foreign key (deptid)  references department(dept_id));
+              child               parent
+
+
+----------------------------------------------------------------------
+ Filter queries
+ -- distinct :  returns only unique records 
+ -- select distinct colname from tablename
+
+-- >  where clause :  it is used to filter records according to the given condition
+select */collist from tablename where condition;
+-->  To apply more than one condition
+and  : it returns records where all the conditions are true. 
+	-> select collist from tablename where condition1 and condition2;
+
+or  : it returns records where any of the conditions is true.
+	-> -> select collist from tablename where condition1 or condition2;
+not :  it returns record where condition is false.
+	-> select collist from tablename where not (condition1 and condition2);
+------------------------------------------------------------------
+-> Sort records in ascending or descending order, we use order by clause
+select collist from tablename order by colname asc/desc;  -> in ascending
+
+-> sort records with multiple columns->  when first column has similar values, it sorts according to second column, if second is same also, then it goes to third column. 
+select collist from tablename order by colname asc/desc, colname asc/desc, colname asc/desc,.......;  
+-------------------------------------------
+To update a record or number of records
+update tablename set colname=value where condition;
+update tablename set colname=value;
+
+To update the table structure, we use alter table command
+using this, we can add, remove or update a column structure, constraints, datatypes etc.
+=> to add a column to the table
+alter table tablename add colname datatype constraint;
+=> to modify structure of the table
+alter table tablename modify colname datatype constraint;
+alter table tablename add constraint constname constraint(colname);
+
+--> add passwords for all employees by taking employeename@userid.
+MySQL/t-sql/ MariaDB
+update employee set password = concat(name, '@', userid);
+sql server
+update employee set password = name + '@'+ userid(uid as varchar);
+PostgreSQL/oracle/SQLite
+update employee set password = name || '@' || userid;
+
