@@ -1,0 +1,124 @@
+CRUD(Create Read Update Delete)
+-------------------------------
+Delete Query: It is used to delete selected records. It is preferable to use it with some condition.
+delete from table name where condition;
+
+=> limit clause:  it is used to get a specific number of rows from the table
+starting from the given index. In sql rows have an index starting from 0.
+
+Example(total records : 45)
+page 1 :  0-9
+page 2 :  10-19
+page3  : 20-29
+page 4 :  30-39
+page 5 : 40-49
+
+limit clause syntax
+select collist from tablename limit startindex, totalrecords;
+
+select * from employee limit 0, 10;   for page 1
+select * from employee limit 30, 10;  for page 4
+Note : limit clause works in MySQL
+
+=> For Sql Server/MS Access
+-----------------------------
+select top  numbers/percent colname from tablename where condition;
+
+Oracle
+------
+select collist from tablename order by col fetch first number ROWS only;
+-----------------------------------------------------------------
+Aggregate Functions
+-------------------
+min()
+2. max()
+3. sum()
+4. avg()
+5. count()
+
+select functioname(colname) from tablename;
+-----------------------------------------------------
+Like operator:
+it is used for pattern wise search operations.
+select * from tablename where colname like 'pattern';
+we can use some wildcards to create pattern:-
+%(percent)    : it is used to represent any number of characters.
+_(underscore)  :  it represents only one character.
+
+select * from employee where empname like '%a%';
+select * from products where productname like '%shirt%';
+-------------------------------------------------------------
+in operator
+------------
+it provides us an option to fetch records according to the given list.
+select * from tablename where colname in (value1, value2, .....);
+
+between operator
+----------------
+it helps us to provide a range of values to fetch records from the table.
+select * from tablename where colname between startrange and endrange;
+--------------------------------------------------------------------
+Products
+productid, productname, category, price, qty
+101	   sugar	premium   70      50
+102	   Tea		basic     25      100
+103	   Honey	premium	  150	  50
+
+Orders
+order_id, CUSTOMERNAME, product_list , totalprice, status
+OR101     abc		[]
+
+productlist
+productid orderid purchase_qty subtotal
+103        OR101   2             300
+102	   OR101   3             75
+109	   OR101   2		  0
+110        OR101   1              0
+
+joins/outerjoin/fulljoin :  it joins two tables and returns all the rows when there is a match in either of the tables.
+In MySQL, there is no fulljoin or outer join option is available. For doing so, we can use the union operator on left and right join
+
+
+Left join :  it joins two tables and returns all the records from the left table and only matching records from right table.
+left table - products,  right table - productlist
+productid,  productname, purchase_qty subttotal
+101		sugar        null	null
+102              tea          3         75
+103              honey        2         300
+
+Right Join :  it joins two tables and returns al the records from the right table and only returns matching records from left table.
+productid,  productname, purchase_qty subttotal
+103        honey  		3             300
+102	   tea			3             75
+109	   null   		2	       0
+110        null   		1              0
+
+Inner Join :  it returns only matching records, means common records.
+productid,  productname, purchase_qty subttotal
+103        honey  		3             300
+102	   tea			3             75
+
+self join :  it is used when we want to match two conditions in the same table.
+Example:   suppose in employee table we have a managerid column as well.
+we need to show that which employee comes under which manager(manager name).
+empid	empname	age	salary deptid	password managerid
+101	jj	28	66000	201	jj#123	 -
+102	kk	27	56000	202	kk#123	 -
+103	mm	24	45000	201	nn#123	 101
+104	pp	27	48000	201	pp#123	 101
+105	vv	33	55000	202	vv#123	 102
+
+department
+dept id 	deptname
+201		accounts
+202		Sales
+
+Cross Join : A cross join combines every row of the first table with every row of the second table. But it uses cartesian product(a(x+b))
+a*x+a*b.
+Result of cross join on both tables :-
+empid empname deptname
+101	jj	201
+101	jj	202
+102	kk	201
+102	kk	202
+---
