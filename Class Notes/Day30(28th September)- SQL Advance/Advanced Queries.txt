@@ -1,0 +1,102 @@
+Advanced Queries
+----------------
+union operator
+--------------
+it is used to combine the results of two different select statements.
+It removes the duplicate records.
+select statement should be applied either on the same table or
+similar tables which have same set of columns
+Syntax:
+	select statement ----
+	union
+	select statement......
+
+Example:-
+IPL matches :-  
+2025---  teamname,  wins, loses, best cricketer
+2026---  teamname,  wins, loses, best cricketer
+
+Example
+ABC LTD. 
+Employee(Delhi)  empid  empname qualification, address, phone
+Employee(Mumbai)  empid  empname qualification, address, phone
+---------------------------------------
+union all operator:
+-----------------
+it will also combine two different select statements but it will also include duplicate rows.
+Syntax:
+	select statement ----
+	union all
+	select statement......
+
+------------------------------------------
+group by
+--------
+it is used to group records according to the given column values. 
+We can also apply aggregate functions over these particular groups to generate total counts, subtotals , max, min etc.
+Syntax:
+select columnname, ...,aggregate_function(colname) from tablename group by colname;
+-----------------------------------------------
+having clause
+-------------
+the having clause is used on group by queries.
+it is different from where clause as it filters records before applying
+group by but having clause works on the output of group by option.
+
+Syntax:
+select columnname, ...,aggregate_function(colname) from tablename
+ group by colname having condition;
+
+------------------------------
+exist operator
+--------------
+-> exists operator is used to check or compare the values with a subquery.
+it is mandatory for the subquery to return at least one row.
+-> if the subquery returns one or more rows- exists is true
+-> if the subquery returns no rows- then exists is false.
+
+Syntax:
+select columnlist from tablename where exists(select colname from tablename where condition);
+
+Example:-
+Employee
+empid name 	age salary 	deptid
+101 	abc	23   34000	201
+102     xyz	24   66000	202
+103	mm	25   77000	203
+104     ee	22   34000      202
+
+department
+depid 	depname
+201      Accounts
+202      Sales
+203	 IT
+204	 hh
+select * from employee e where exists(select 1 from department d where d.depid= e.deptid);
+
+----------------------------------------------
+any :  it is used to compare a value to every value returned  by the sub query.
+it returns true if at least one value in the subquery meets the condition.
+
+select columnlist from tablename where colname any(select colname from tablename where condition);
+
+all :  it is used to compare a value to every value which is returned by the subquery. it evaluates to true, if every value in the subquery result set meets the condition. 
+it is used with where and having clause.
+select columnlist from tablename where colname operator all (select colname from tablename where condition);
+-------------------------------
+select into: when we are required to create a new table and fill it with data from existing table. it is useful in creating backups or temporary tables.
+
+select */collist into newtable [in externaldbname] from source table where condition;
+------------------------------------------------------------------------------------
+-> Create a maven project InventoryManagementSystem
+-> create a new package with name com.inventory.entities in 
+src/main/java -> com.inventory.entities     database
+			-> products class  (product table-> pid, pname, cprice, sprice, qty)
+			-> Seller class    (seller table -> sellerid, sellername, companyname, phone, productlist)
+		 com.inventory.dao
+		 com.inventory.utilities
+		 
+-> inside the entities package 
+
+
+
