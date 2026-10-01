@@ -1,0 +1,14 @@
+Steps to create a jdbc maven project
+------------------------------------
+->  create a maven quick start project
+->  Add necessary dependencies
+	->  MySQL dependency(Required)
+	-> Lombok dependency(optional):  it provides us annotations of all 
+	entity class properties. 
+		like:- getter/setter methods  -> @Getter, @Setter, 
+			constructors -> @NoArgsConstructor
+			             -> @AllArgsConstructor
+			toString()  -> @ToString
+->  In entities package, create entity classes
+->  in the dao package create a dao class like ProductDao
+	
