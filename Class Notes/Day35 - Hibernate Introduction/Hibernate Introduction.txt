@@ -1,0 +1,138 @@
+Hibernate
+----------
+1. SessionFactory:  create sessions and is generally shared across application threads.
+2. Session:  Provides api to interact with entities/db. Session generally starts when there is a transaction which needs to be executed. session object can be used to execute single or multiple transactions.
+3. Transaction : it controls the commit and rollback for transactional work like
+insertion, deletion or updating.
+--------------------------------------------------------------
+Steps for hibernate project
+1. create a maven project
+2. Add dependencies
+	->  hibernate-core
+	->  MySQL connector
+	->  Lombok 
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>6.5.2.Final</version>
+</dependency>
+<!-- Source: https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.33</version>
+</dependency>
+<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.48</version>
+</dependency>
+---------------------------------------------
+3.  create an entity class in entities package
+4. set the configuration for hibernate and sql
+	->  create hibernate.cfg.xml file inside src/main/resources or src/main/java/com/employeemgt
+	-> add the cfg file structure 
+<?xml version='1.0' encoding='utf-8'?>
+
+  <!DOCTYPE hibernate-configuration PUBLIC 
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+  "https://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- add database settings -->
+		<property name="hibernate.connection.driver_class">
+		com.mysql.cj.jdbc.Driver
+		</property>
+		
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost:3306/employeemanagement
+		</property>
+		
+		<property name="hibernate.connection.user">root</property>
+		<property name="hibernate.connection.password">1234</property>
+		
+		<!-- sql show and table auto creation -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- hibernate properties -->
+		<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQL8Dialect
+		</property>  	
+			
+	</session-factory>
+</hibernate-configuration>  
+
+----------------------------------------------------
+5.  create objects to run the code
+-> create the object of SessionFactory interface and initialize it with cfg file to build the session factory,
+SessionFactory sf= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+
+6. create the object of session to run database operations.
+	Session session = sf.openSession();
+
+7. create the object of Transaction to commit and rollback operations:-
+	Transaction tr= session.beginTransaction();
+8.start using functions of hibernate to perform transactions on database
+but remember to commit and close() session once the tasks are completed.
+tr.commit();
+session.close();
+---------------------------------------------------
+ORM(Object Relational Mapping)
+------------------------------
+it is used to map tables in database with entity class in our java project.
+->  There are two ways to perform mapping in hibernate:-
+	->  using annotations : in case annotations, we can add the mapping annotations in the entity classes. 
+	->  using xml
+
+->  after we are done with the mapping, in cfg file we need to add the reference of the file. 
+	->  In case, we are using annotations:- 
+		then use following option in cfg file:
+		<mapping class="fullpath of entity file"/>
+	->  In case we are using xml mapping:-
+		<mapping resource="Entityclassname.hbm.xml"/>
+---------------------------------------------------------------------
+CRUD Operations in Hibernate
+-----------------------------
+1. Insertion Operation:  it is used to insert a new record in the database table. 
+	for performing insertion, hibernate provides us two methods:-
+1. save(): it is used to save an object values into the given table. It immediately generates an sql query and also returns the value of primary key of the record which is being inserted. 
+		Syntax:-
+			session.save(Entityobject);
+
+2. persist():  it is also used to insert a record into the table. It doesn't guarantee an immediate sql insert and returns nothing)(it is a void method)
+Syntax: 
+		session.persist(entityobject);
+
+--------------------
+2. get Record:  To perform read operation on database to get a single record, we can use these functions:-
+-> find(): it is used to find a record in database table. it is recommended method of JPA. 
+	Syntax: 
+	ob = session.find(EntityClass.class, primary key value);
+
+-> get():  it is similar to find function. it is also used to get a record from the table. it returns null if it doesn't find the record.
+Syntax:
+	ob = session.get(Entityclass.class, primary key value);
+-> load(): it is also used to fetch a record from the table. but it throws an exception, if it doesn't find the record.
+
+-----------------------------------------------------
+3. Update Operation: Hibernate provides automatic dirty checking for managed entities. if you retrieve an entity within an active session, modify its properties and commit the transaction, Hibernate automatically issues an update statement. 
+Example:-
+	Employee emp = session.find(Employee.class, 1);
+
+	if(emp!=null)
+	{
+		emp.setSalary(99900);
+	}
+	tr.commit();
+------------------------------------
+4. Delete Operation:  To remove a record from the database, first retrieve the entity so it is managed by the session and then pass it to the remove() or delete() method.
+delete():  it is a legacy method of hibernate which is used to delete a record.
+remove():  it is the new method of JPA to delete a record.
+
+
+
+
+ 
+	

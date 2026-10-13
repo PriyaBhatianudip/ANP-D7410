@@ -19,5 +19,5 @@ public class Employee
 	private int age;
 	private String city;
 	private float salary;
-	
+	private int deptId;
 }

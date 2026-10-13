@@ -1,0 +1,58 @@
+JDBC
+-----
+-> Connection
+-> ResultSet
+-> Statement
+	-> get all records
+	-> add new record
+	-> update record
+	-> delete record
+	-> get single record
+-----------------------------
+PreparedStatement
+-----------------
+PreparedStatement represents a precompiled sql statement. it is used when you need to execute parameterized SQL Queries multiple times with different values.
+Features:-
+->  Precompiled Queries:  The sql query is compiled by the database engine once, making subsequent executions faster.
+-> sql injection prevention:  Input values are automatically sanitized using placeholders(?) binding, preventing sql injection attacks.
+-> batch processing: it supports efficient batch operations for inserting or updating multiple records.
+Example:
+for writing this query:-
+insert into employee values(101,'jj', 23, 78000);
+using prepared statement
+1. create query
+String query = "insert into  employee values(?,?,?,?);
+1. ?-  employee id(int)
+2. ?-  employee name(String)
+
+
+2. initialize the object of PreparedStatement
+It sends the query for compilation, so that query can be used later
+to make transactions. And it returns the reference of the query with
+object of PreparedStatement. 
+PreparedStatement ps =  con.prepareStatement(query);
+
+3. setup the values
+ps.setInt(1, emp.getEmpId());
+ps.setString(2, emp.getEmpName());
+ps.setInt(3, emp.getAge());
+ps.setFloat(4, emp.getSalary());
+
+4. execute query(insert/update/delete)
+int nrecord = ps.executeUpdate();
+
+for select type queries:- 
+rs= ps.executeQuery();
+
+--------------------------------------------
+-> create project
+-> add dependencies
+-> create entity package with entity classes.
+-> create dao package with dao classes.
+-> create utility classes->  classes which defines which operations to perform and help dao classes with data, functions etc.
+-> frontend:-  options for user to choose from or show result pages to the user.
+
+
+
+
+

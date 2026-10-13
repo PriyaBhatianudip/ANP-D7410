@@ -8,6 +8,7 @@ public class DBConnection
 {
     // db connection related code
     // setup the objects
+
     private static final String url ="jdbc:mysql://localhost:3306/InventoryDB";
     private static final String username="root";
     private static final String password ="1234";
