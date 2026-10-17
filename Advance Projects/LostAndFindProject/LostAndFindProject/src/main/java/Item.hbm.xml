@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.entity.Item" table="stolen_items">
+	<id name="itemId" column="item_id">
+		<generator class="increment"></generator>
+	</id>
+	
+	<property name="itemName" column="item_name"/>
+	<property name="type"/>
+	
+	<list name="accessories" table="accessories">
+	<!-- foreign key -->
+		<key column="i_id"></key>
+		<!-- index column to identify each item separately -->
+		<index column="type"></index>
+		<!-- individual item or subitem -->
+		<element column="accessory" type="string"></element>
+	</list>
+	
+	<set name="specifications" table="Item_specs">
+		<key column = "item_id"/>
+		<element column="specs" type="string" not-null="true"/>
+	</set>
+	
+</class>
+</hibernate-mapping>
+<!-- it is the mapping file which maps all the variables of entity class with the
+ database table and columns -->

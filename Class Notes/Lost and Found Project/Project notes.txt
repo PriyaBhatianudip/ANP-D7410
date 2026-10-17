@@ -1,0 +1,27 @@
+1.create a maven project :  Smart Lost & found management system
+Project Scenario:-
+A college campus receives reports of lost and found items every day. Students can report missing belongings, register found items, search for matching reports, and claim items after verification.
+Unlike a conventional Employee or Student Management System, this project gives students a reason to implement multiple entity relationships, search queries, transactions, and business rules.
+1. User Management
+	-> Register user
+	-> maintain contact information
+	-> view their reports
+-------------------------------------------
+User - 	Entity	-    
+-   	userid	- primary key - String - random number(5) digits  
+-	name
+-	phoneno
+-	address
+-	email
+-	password
+-	department
+
+->  UserUtilities - front end
+	->  register()
+	->  findUser()
+	->  getAllUsers()
+	->  updateUsers()
+	->  deleteUser()
+
+-> create the cfg for this project
+-> create UserDao

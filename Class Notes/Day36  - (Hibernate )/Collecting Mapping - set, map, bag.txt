@@ -1,0 +1,71 @@
+---------------------------------------------------
+Set Interface  -> set type mapping
+-----------------------------------
+Set is an inbuilt interface of java collection framework.
+There are various classes which implements Set interface, like HashSet, LinkedHashSet, TreeSet, SortedSet etc.
+
+In hibernate, we can also map Set type with the database in two ways:-
+1. xml mapping : to perform xml mapping, we need to add the <set> tag so that the data from set type can be saved in the tables.
+<set name="var-name" table="tablename">
+	<key column ="colname"/>
+	<element column="colname" type="Classname" not-null="true"/>
+</set>
+
+-> <set name="var-name of class" table="tablename"> : maps the entity property with the separate table
+-> <key column ="colname"/>:  defines the foreign key in other table
+-> <element column="">:  it is used to store individual value of the set.
+
+2. annotation based mapping: in this case we will add annotations before the variable declaration to map this property with the database table.
+
+@ElementCollection
+@CollectionTable(name="tablename", joinColumns= @JoinColumn(name="fk_colname"))
+@Column(name="colname in main table")
+private Set<String> varname =new HashSet<>();
+
+->  @ElementCollection :  it is used to map a collection basic values such as String, Integer etc.
+-> @CollectionTable :  it is used to create a separate table for collection values
+->  name="fk_colname" :  foreign key colname in the other table.
+-> @JoinColumn :  it is used to link the foreign key with the parent table
+----------------------------------------------------
+=> Bag: it is a collection type that allows duplicate values and doesn't maintain the insertion order.
+Syntax: 
+	Collection<Classname> bagname=new ArrayList<>();
+
+HBM Mapping
+------------
+<bag name="varname of class" table="tablename">
+	<key column="fk-colname/>
+	<element column="colname" type="string" not-null="true"/>
+</bag>
+
+Bag with annotation
+-------------------
+
+@ElementCollection
+@CollectionTable(name="tablename", joinColumns= @JoinColumn(name="fk_colname"))
+@Column(name="colname in main table")
+private Collection<String> description =new ArrayList<>();
+----------------------------------------
+Map :  it is used to store values in key value pair.
+Syntax:
+Map<Class, Class >  varname= new HashMap<>();
+
+In HBM 
+-------
+<map name="varname" table="tablename">
+<key column ="fk_colname"/>
+<map-key column = "colname" type="string"/>
+<element column="colname" type="string not-null="true"/>
+</map>
+
+with annotations
+-----------------
+@ElementCollection
+@CollectionTable(name="tablename", joinColumns= @JoinColumn(name="fk_colname"))
+@MapKeyColumn(name="key-colname")
+@Column(name="colname in main table")
+Map<String, String> prices = new HashMap<>();
+
+
+
+

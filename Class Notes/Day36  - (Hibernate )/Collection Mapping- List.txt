@@ -1,0 +1,74 @@
+Collection Mapping
+-------------------
+It is used to map collection objects with the database tables either by creating a separate table which is joined with the main table using foreign key or single table containing all the data in first normal form.
+
+Persistent classes
+------------------
+List:  is used to store multiple items
+Example:-
+public class Item
+{
+	private int itemId;
+	private String itemName;
+	private String itemtype;
+	private List<String> accessories;
+}
+-> add its mapping in the hbm(hibernate mapping) file
+->  create it inside src/main/java
+->  Item.hbm.xml
+-> for mapping a list with table, we need to use the <list>tag in the hbm file.
+	<list name="varname" table="tablename">
+		<key column="i\\\_id"></key>
+		<index column="typename"></index>
+		<element column="varname" type="datatype/objectname"></element>
+	</list>
+
+Item  class
+itemid   -  int
+itemname  - String
+itemtype  - String
+accessories -> List<String>
+
+
+Tables
+Items  ->  item_id, item_name, itemtype
+Accessories ->itemId(fk), type(index),  accessory
+
+items
+item_id, 	item_name, 	itemtype
+101		Bag		bags
+102		Dell Laptop	laptop
+
+Accessories
+itemId(fk), 	type(index),  	accessory
+101		0		tab
+101		1		water bottle
+101		2		ring
+102		0		charger
+102		1		mouse
+102		2		laptop
+102		3		keyboard
+
+Possible items for <key> column tag
+<key
+column="columnname"
+on-delete="noaction|cascade"
+not-null="true|false"
+property-ref="propertyName"
+update="true|false"
+unique="true|false"
+/>
+
+Annotation-Based Mapping
+
+Alternative options for xml tags in annotations
+ Item.hbm.xml					Annotation equivalent
+<class table="stolen\\\_items">			@Table(name = "stolen_items")
+<id column="item\\\_id">				@Id and @Column(name = "item_id")
+<property name="itemName" column="item\\\_name"/>	@Column(name = "item_name")
+<list name="accessories" table="accessories">	@ElementCollection + @CollectionTable
+<key column="i\\\_id"/>				@JoinColumn(name = "i_id")
+<index column="type"/>				@OrderColumn(name = "type")
+<element column="accessory" type="string"/>	@Column(name = "accessory")
+
+
