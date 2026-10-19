@@ -28,6 +28,8 @@
 		</property> 
 		
 		<mapping class="com.files.entity.Item"/>	
-			
+		<mapping class="com.files.entity.User"/>	
+		<mapping class="com.files.entity.Department"/>	
+		
 	</session-factory>
 </hibernate-configuration>

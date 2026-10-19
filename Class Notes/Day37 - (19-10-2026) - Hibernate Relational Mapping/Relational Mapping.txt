@@ -1,0 +1,92 @@
+Relational Mapping
+------------------
+It is used to establish relationships between entities and tables in a relational database.
+Because relational databases uses tables and foreign keys  while java uses objects and references, hibernate bridges between java and dbms to bridge the gap using jpa annotations and xml mapping.
+Types of Relational Mapping
+---------------------------
+There are 4 types of relationships:-
+1. One to One :  it is a type or relational mapping in which one record of an entity is associated with exactly one record of another entity and vice versa.
+For example: 
+one person has only one passport
+one employee has one employee id card
+Example classes
+--------------
+Student  -  id, name
+student_profile -  profile_id, address, phone, student_id(fk)
+
+Student table -  id, name, address, phonenumber, email, password
+marks    -      id(fk,pk), corejava, jdbc, hibernate, spring
+
+To perform one to one relationship in a java entity class, we can either apply annotation mapping or xml mapping.
+using annotations:-
+------------------
+
+@Entity
+@Table(name="studentdetails")
+class Student
+{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int studentid;
+	private String name;
+	private String address;
+	private long phone;
+	private String email;
+	private String password;
+
+	@OneToOne(mappedBy="student", cascade = CascadeType.ALL)
+	private Marks marks;
+}
+
+
+marks class
+marks    -      id(fk,pk), corejava, jdbc, hibernate, spring
+
+class Marks
+{
+	private int studentid;
+	private int corejava;	
+	private int jdbc;
+	private int hibernate;
+	private int spring;
+
+	@OneToOne
+	@MapsId
+	@JoinColumn(name="studentid")
+	private Student student;
+
+}
+
+Annotations used:-
+1. @OneToOne : this annotation defines a one to one association between two entity types.
+Along with this annotation, we also need to define its associated annotations. we need to define the options with this annotation in the parent class.
+->  mappedBy="studentdetails" :  this attribute identifies the field or property on the basis of which we are establishing the relationship. it identifies the field in the other property that owns a bidirectional relationship.
+Example 
+Student class    
+-> marks m     mappedBy="s"   
+Marks      
+-> Student s
+				
+cascade : it is a mechanism which is used to define the behaviour of the entities. 
+whenever we are making any changes in the parent, will it affect the child entity record or not, such kind of things are decided by this option. 
+it is normally applied on insertion, deletion, and update operation.
+
+Cascade option has three types:-
+1. PERSIST :  it automatically persists a new associated entity when the source is persisted.
+it is used in save operations.
+2. MERGE  :  it propagates the merge operation to the associated entity. it is used for update operation. 
+3. REMOVE : It propogates removal of an entity to its associated entity. it is used for delete operations.
+4. REFRESH :  it performs the refresh operation to the associated entity.
+5. DETACH :  It is used to detach an entity from its associated entity.
+6. ALL : it includes all operations 
+
+Associated Class annotations:-
+1. @OneToOne : it is used to define the entity which is associated with other class entity.
+2. @MapsId :  it indicates that the primary key of the current entity is derived from the primary key of its associated entity. It is used when we have primary key association in both of the classes or entities.
+3. @JoinColumn(name="studentid") : it specifies the database column used to establish the relationship between two entities. 
+	
+
+
+2. One to Many
+3. Many to one
+4. Many to Many

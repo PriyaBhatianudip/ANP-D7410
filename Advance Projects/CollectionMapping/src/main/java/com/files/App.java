@@ -6,7 +6,10 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.files.dao.ItemDao;
+import com.files.dao.UserDao;
+import com.files.entity.Department;
 import com.files.entity.Item;
+import com.files.entity.User;
 
 
 
@@ -69,9 +72,28 @@ Scanner sc;
 		System.out.println("Item saved successfully!!");
 	}
 	
+	
+	public void registerUser()
+	{
+		Department dept=new Department("IT", "AA");
+		User user=new User("JJ", "jj@gmail.com", 9876543210l);
+		
+		user.setDepartment(dept);
+		dept.setUser(user);
+		
+		UserDao udao=new UserDao();
+		udao.saveUser(user);
+		
+//		User u = udao.getUserById();
+	}
 	public static void main(String[] args) 
 	{
 		App ob=new App();
-		ob.addItem();
+//		ob.addItem();
+//		ob.registerUser();
+		
+		UserDao dao=new UserDao();
+		User user = dao.getUserById(1);
+		System.out.println(user);
 	}
 }
