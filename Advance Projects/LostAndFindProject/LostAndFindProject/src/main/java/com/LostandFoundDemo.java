@@ -6,8 +6,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.dao.ItemDao;
+import com.dao.UserDetailsDao;
 import com.entity.Item;
+import com.entity.UserDetails;
 
+import Utilities.User_dept;
 import Utilities.Userutilities;
 
 // a class with main method is used to start the entire project.
@@ -81,7 +84,14 @@ public class LostandFoundDemo {
 		
 //		ut.deleteUser();
 		
-		LostandFoundDemo ob=new LostandFoundDemo();
-		ob.addItem();
+//		LostandFoundDemo ob=new LostandFoundDemo();
+//		ob.addItem();
+		
+		User_dept ud=new User_dept();
+		
+//		ud.registerUser();
+		UserDetailsDao udao=new UserDetailsDao();
+		UserDetails user= udao.getUserById(1);
+		System.out.println(user);
 	}
 }

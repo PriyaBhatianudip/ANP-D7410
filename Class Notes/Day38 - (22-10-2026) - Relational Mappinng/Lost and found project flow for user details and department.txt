@@ -1,0 +1,18 @@
+Lost and found project
+------------------
+Lostandfounddemo.java(main)
+   | call registerUser()
+User_dept class(registerUser)
+  | 
+-> initialize all variables of userdetails class
+	-> userid
+	-> name
+	-> email
+	-> phone
+	-> department object
+-> initialize all the variables of department class
+	-> deptid
+	-> deptname
+	-> manager
+	-> user object
+->  call the saveUser() method of dao class(userdetaildao)

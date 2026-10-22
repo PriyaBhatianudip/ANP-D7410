@@ -1,0 +1,14 @@
+Q.  create a new project on Hospital Management System
+	-> create classes doctor and department
+		Doctor class -  doctorId, doctorName, specialization, deptId
+		Department class -  deptId, deptName
+	->  create the appropriate hbm files and apply one to one mapping
+	->  create a DoctorUtility class to perform following operations
+		->  register new doctor
+		->  check doctor details by id/all
+		-> create a menu function which should provide options to the user 			to choose from.
+	->  create a DoctorDao Class to perform following operations:-
+		->  registerDoctor()
+		->  getAllDoctors()
+	
+	
