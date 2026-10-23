@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "https://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+    
+<!-- this is the configuration file. which is used to perform settings like
+connecting with the database in the given dbms, create tables, authenticate with database
+other configurations like showing internal sql commands. 
+it also set the mapping and entity files -->
+
+<hibernate-configuration>
+    <session-factory>
+		<!-- add database settings -->
+		<property name="hibernate.connection.driver_class">
+		com.mysql.cj.jdbc.Driver
+		</property>
+		
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ecommerce?createDatabaseIfNotExist=true
+		</property>
+		
+		<property name="hibernate.connection.user">root</property>
+		<property name="hibernate.connection.password">1234</property>
+		
+		<!-- sql show and table auto creation -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		
+		<!-- hibernate properties -->
+		<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLDialect
+		</property> 
+		
+		 <mapping class ="com.ecommerce.entity.Product"/>
+		 <mapping class = "com.ecommerce.entity.Category"/>
+	</session-factory>
+</hibernate-configuration>

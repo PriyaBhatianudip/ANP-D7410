@@ -1,0 +1,75 @@
+One to Many
+-------------
+One to Many relationship exists where one record of a table is associated with multiple records of another table. 
+For example 
+Newspaper company   has many  subscribers
+One                	<->     Many
+
+In e-commerce project
+One category  can contain multiple  products
+One                 <->              many
+Parent				    child
+----------------------------------
+In Hibernate, we have following annotations for One to Many relationships
+1. @OneToMany  :  it represents multiple records of an entity belonging to another entities' record.
+In Ecommerce project :it will be applied to Category class ->  productlist.
+
+2. @ManyToOne :  it represents the dependent object of the child class. 
+In E-Commerce project :  apply it in Product.java
+->  Category category;
+----------------------------------------
+
+
+3. @JoinColumn :  It is used to specify the foreign key. it is normally applied in child class. 
+apply it to productlist.
+-----------------------------------------
+To create a database using hibernate
+-------------------------------------
+It is available with hibernate, but not strongly recommended due to security concerns.
+<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/ecommerce?createDatabaseIfNotExists=true
+</property>
+----------------------------------------
+ManyToMany
+----------
+It is also known as bidirectional mapping as here each record can be related to multiple records of another table and vice versa. 
+Teacher     <-->    Student
+
+Teacher can have multiple students
+A student can have multiple teachers
+In E-Commerce Project:
+for many to many relationship can be applied to Product and orders
+
+product table       -    orders
+product_id               orderid
+name			 orderdate
+price			 customername 
+orders(set<Order>)
+-----------------------------------------
+		Product_Order
+	product_id   (fk)
+	orderid(fk)
+Annotations:-
+1. @ManyToMany :  it is used with the object which is related to another class object.
+Syntax:
+	@ManyToMany(cascade={CascadeType.PERSIST,
+		  CascadeType.MERGE})
+
+2. @JoinTable: it is used to create a new table to form a relationship between both of the tables. Here we need to add foreign keys for both of the tables.
+@JoinTable(name="tablename", joinColumns = @JoinColumn(name="primary key of same class"),
+inverseJoinColumns= @JoinColumn(name="foreign/primary key of other class"))
+-------------------------------
+In ecommerce project->
+In Product.java 
+
+@ManyToMany(cascade={CascadeType.PERSIST,
+		  CascadeType.MERGE})
+@JoinTable(name="Product_Order", joinColumns = @JoinColumn(name="productId"),
+inverseJoinColumns= @JoinColumn(name="orderId"))
+private Set<Order> orders;
+
+In Other class:-
+Order.java
+
+@ManyToMany(mappedBy ="orders")
+private  Set<Product> products;
+
