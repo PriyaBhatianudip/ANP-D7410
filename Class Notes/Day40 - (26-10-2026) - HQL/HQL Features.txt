@@ -1,0 +1,43 @@
+HQL Features
+-------------
+-> Hql follows Object oriented approach.
+-> it helps us to write database independent queries.
+-> It also supports basic CRUD operations.
+-> it helps us to write conditional queries.
+-> it supports relational queries like join, association type queries.
+
+Difference b/w HQL and SQL
+-> Hql stands for Hibernate Query Language and SQL stands for Structured Query Language.
+-> Hql works with java entity classes whereas sql works with database tables.
+-> Hql helps us to write database independent queries but in sql we work directly with tables which makes it dependent on tables/database.
+----------------------------------------------------
+Functions of Hql
+1. createQuery():  it is used to create and execute hql/jpql queries. HQL is object oriented and queries entity classes and their properties rather than database tables.
+Syntax:
+Query<Classname> obname = session.createQuery(querystring, Classname.class);
+
+To create an Hql Query
+Example:
+In SQL :  select * from students where marks >=70;
+In HQL :  from classname aliasname where alias.colname operator value
+          from student s where s.marks>=70
+
+In SQL : select * from students where marks >= 70 order by marks desc;
+In HQL : from students s where marks >= :minMarks order by s.marks desc 
+
+-----------------------------------------------
+Named parameters
+------------------
+These are placeholders in our HQL Queries defined with a colon(:). They allow us to define or pass dynamic data into our hql queries.
+Syntax:
+	:paramname  or :seqno
+Example:
+	:sname  or :1, or :2
+
+-----------------------------------------------
+list():  it is used to obtain all the records from a table/entity.
+it is used to obtain all the records which are returned using from the createQuery function.
+
+
+
+
