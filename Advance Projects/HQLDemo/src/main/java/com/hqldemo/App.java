@@ -61,8 +61,6 @@ public class App {
 //        	}
         	
         	sdao.getStudentMarks();
-        	
-        	
 //        } catch (Exception e) {
 //            if (tx != null && tx.isActive()) tx.rollback();
 //            e.printStackTrace();

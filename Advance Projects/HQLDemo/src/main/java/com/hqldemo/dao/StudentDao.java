@@ -22,7 +22,7 @@ public class StudentDao
 	{
 		Session session = sf.openSession();
 		
-		String hql = "from Student s";
+		String hql = "from Student s join fetch s.department";
 		
 		Query<Student> records = session.createQuery(hql, Student.class);
 		
@@ -40,8 +40,7 @@ public class StudentDao
 	{
 		Session session = sf.openSession();
 		String hql = "select s.studentid, s.studentname, s.marks "
-				+ "from Student s";
-		
+				+ "from Student s";		
 		List<Object[]> results = session.createQuery(hql,Object[].class)
 				.getResultList();
 		
@@ -57,4 +56,22 @@ public class StudentDao
 		
 		session.close();
 	}
+	
+	public void getName_City()
+	{
+//		2. Display only student names and cities.
+		String hql = "select s.studentname, s.city from Student s";
+		
+		Session session= sf.openSession();
+		List<Object[]> results = session.createQuery(hql, Object[].class).getResultList();
+		
+		System.out.println("Name\tCity");
+		for(Object[] row: results)
+			System.out.println(row[0]+"\t"+row[1]);
+		
+		session.close();
+		
+	}
+//	3. Display students who scored more than n(75).
+//	4. Display students whose marks are between 60 and 85.
 }

@@ -20,7 +20,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name="departments")
 public class Department 
@@ -39,5 +38,11 @@ public class Department
 	
 	@OneToMany(mappedBy = "department")
 	private List<Student> students = new ArrayList<>();
+
+	@Override
+	public String toString() 
+	{
+		return "deptid=" + deptid + ", deptname=" + deptname;
+	}
 	
 }

@@ -19,7 +19,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Table(name="students")
 public class Student 
@@ -44,6 +43,12 @@ public class Student
 		this.marks = marks;
 		this.city = city;
 		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return "studentid=" + studentid + ", studentname=" + studentname + ", age=" + age + ", marks=" + marks
+				+ ", city=" + city +", "+ department;
 	}
 
 

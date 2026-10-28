@@ -1,0 +1,18 @@
+HCQL
+-----
+show records in ascending or descending order
+cb.asc()
+cb.desc()
+
+for ascending order 
+cq.select(root). orderBy(cb.asc(cb.get("name")));
+cq.select(root). orderBy(cb.desc(cb.get("name")));
+
+------------------------------
+pagination:  to get first n records at a time from the given row index.
+setFirstResult(n) :  it specifies the initial index from where we can start getting the records.
+setMaxResults(n) :  it specifies how many records to get.
+
+session.createQuery(cq).setFirstResult(pgno-1)*pagesize)
+			.setMaxResults(pagesize)
+			.getResultList();
