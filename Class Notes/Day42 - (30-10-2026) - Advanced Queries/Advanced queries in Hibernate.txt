@@ -1,0 +1,14 @@
+Advanced queries in Hibernate
+------------------------------
+=> @NamedQuery : It is an annotation which we can directly apply in entity classes. they are like reusable queries which can be executed whenever needed. 
+Syntax:
+
+@NamedQuery(name ="classname.queryname", query="query string similar to hql")
+Query<Student> query =
+    session.createNamedQuery(
+        "classname.queryname",
+        Classname.class
+    );
+
+
+=> @NamedQueries:  it is used to define multiple queries on the same entity. 

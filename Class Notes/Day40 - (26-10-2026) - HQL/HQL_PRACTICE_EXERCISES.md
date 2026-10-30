@@ -2,9 +2,9 @@
 
 Use the `Student` and `Department` entities.
 
-1. Display all students.
-2. Display only student names and cities.
-3. Display students who scored more than 75.
+1. Display all students.   done
+2. Display only student names and cities.  
+3. Display students who scored more than n(75).
 4. Display students whose marks are between 60 and 85.
 5. Display students who live in Delhi or Noida.
 6. Display students whose names begin with `S`.
