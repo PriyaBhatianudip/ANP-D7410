@@ -1,0 +1,173 @@
+Spring Framework
+-----------------
+It is an open source framework which is used to develop enterprise level applications.
+It provides infrastructure and features that simplify java application development by managing objects, dependencies, transactions, database operations and web application development.
+
+In traditional java projects, developers manually create objects and manage their dependencies.
+Spring provides a container that manages theses objects, their lifecycle and their relationships.
+Spring framework is a framework of frameworks.
+----------------------------------------------
+Features of Spring Framework
+1. IOC(Inversion of Control):  It is a container of spring framework which is responsible for managing object creation and its dependencies.
+2. Dependency Injection :  it is responsible for supplying required dependencies to the objects. 
+3. AOP (Aspect Oriented Programming) : It supports cross-cutting concerns. Means whenever we are running some methods which belongs to the same object or all the methods are grouped using same prefix or suffix, then we can use aop to provide before, after, between support to those methods without modifying them.
+4. Spring MVC(Model View Controller):  it is used to develop web applications. it is a design pattern which has separate modules to each and every part of the application.
+Model   -  Database/table
+view    -  frontend programs/  user response
+controller -    backend related work/ logical programming/ request handling.
+5. Spring JDBC :  It simplifies database operations.
+6. Spring ORM  : It integrates ORM Technologies such as hibernate, jpa etc.
+7. Transaction Management : It is used to manage database transactions.
+8. Spring Security :  it provides security to the spring applications.
+--------------------------------------------------------
+Spring Core Container
+- Core :  it provides fundamental functionality for the framework.
+- Beans :  it provides support for Bean(Entity) creation and management. 
+- Context : It provides the ApplicationContext and access to application object. 
+- SpEL(Spring Expression Language): It provides an expression language for querying and manipulating object values at runtime.
+
+---------------------------------------------
+AOP(Aspect Oriented Programming)
+It separates cross cutting concerns from Business Logic.
+Example:-
+	- Logging
+	- Security
+	- Transaction Management 
+	- Performance Monitor
+-----------------------------------
+Data Access and Integration
+This module provides integration with database related technologies.
+Important components are :-
+	- JDBC
+	- ORM
+	- Transactions
+	- Object/XML mapping
+-------------------------------------
+Web Layer
+-------
+This layer supports web application development. It important components are:-  
+	- Spring MVC
+	- REST API Development
+	- WebSocket Support
+------------------------------------
+Inversion of control
+------------------
+Inversion of control is a design technique or principal in which the responsibility of creating and managing object is transferred from application code to an external container in framework. 
+Example:-
+Without IOC
+
+class Engine
+{
+	public void start()
+	{
+		System.out.println("Engine started!!");
+	}
+}
+
+class Car 
+{
+	Engine engine = new Engine("machine value");
+
+	public void drive()
+	{
+		engine.start();
+		System.out.println("Car is running");
+
+	}
+}
+
+public class User
+{
+	public static void main(String args[])
+	{
+		Car car =new Car();
+		car.drive();
+	}
+}
+
+With IOC
+--------
+class Engine
+{
+	public Engine(String machine)
+	{}
+	public void start()
+	{
+		System.out.println("Engine started!!");
+	}
+}
+
+class Car 
+{
+	@autowired
+	Engine engine;
+	
+
+	public void drive()
+	{
+		engine.start();
+		System.out.println("Car is running");
+
+	}
+}
+
+public class User
+{
+	public static void main(String args[])
+	{
+		Car car =new Car();
+		car.drive();
+	}
+}
+-----------------------------------
+How does spring implements IOC?
+The container:-
+	-  Reads configuration information.
+	-  creates objects(Spring Beans)
+	-  manages their lifecycle
+	-  injects dependencies
+	-  makes managed objects available to the application
+---------------------------
+Types of IOC container in Spring
+-----------------------
+Spring provides two major IoC container interfaces:-
+BeanFactory :  it is the basic IoC container. it is responsible for:-
+	-  creates Beans
+	-  Manage dependencies
+	- provide access to beans
+	- supports basic bean lifecycle management.
+
+Syntax:-
+BeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
+
+2. ApplicationContext:  it is a more feature rich ioc container built on top of BeanFactory. 
+It provides additional features like:-
+	- internationalization 
+	- Event Publishing
+	- Annotation based configuration
+	- Integration with Spring AOP
+	- Resource loading
+
+Syntax:
+ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+-----------------------------------------------
+Spring Project
+---------------
+Student Management System
+-> Student entity class
+-> StudentRepository - > to provide student related information
+->  StudentService -> provide student related operations
+->  Student Management -> it is an outer interface which will interact with user.
+-> main class to start and configure the object.
+-------------------------
+To create a simple spring project using maven
+-> create a new maven project
+-> click on simple maven project(skip archetype selection)
+-> provide project name, group name, artifact id etc.
+-> after project is created, update the library to current library
+-> add dependency
+	-> spring-context
+
+@Component : it is used to make this class eligible for spring container scanning.
+
+

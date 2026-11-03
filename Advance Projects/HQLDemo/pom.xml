@@ -47,13 +47,25 @@
     <version>8.0.33</version>
    
 </dependency>
+<!-- Source: https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-jcache -->
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-jcache</artifactId>
+    <version>6.5.2.Final</version>
+</dependency>
 
+<!-- Source: https://mvnrepository.com/artifact/org.ehcache/ehcache -->
+<dependency>
+    <groupId>org.ehcache</groupId>
+    <artifactId>ehcache</artifactId>
+    <version>3.10.8</version>
+    <classifier>jakarta</classifier>
+</dependency>
 <!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <dependency>
     <groupId>org.projectlombok</groupId>
     <artifactId>lombok</artifactId>
-    <version>1.18.48</version>
-    <scope>compile</scope>
+    <version>1.18.34</version>
 </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

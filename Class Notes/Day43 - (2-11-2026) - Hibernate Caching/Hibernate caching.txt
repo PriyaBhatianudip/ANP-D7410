@@ -1,0 +1,11 @@
+Hibernate caching
+------------------
+Add Dependencies
+1. org.hibernate.orm ->  hibernate jcache
+if version of hibernate core is 6.5.2, then org.hibernate.orm version must also be 6.5.2
+
+2. org.ecache ->  ehcache
+for 6.5.2 hibernate version, ehcache version must be 3.10.8
+
+=> add the required configuration in cfg file:-
+

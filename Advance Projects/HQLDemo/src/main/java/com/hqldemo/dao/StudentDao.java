@@ -17,7 +17,41 @@ public class StudentDao
 	{
 		sf= HibernateUtil.getSessionFactory();
 	}
-	
+	public void getRecordById(int id)
+	{
+		String hql = "from Student s where s.studentid=:sid";
+		Session session = sf.openSession();
+		
+		Query<Student> record = session.createQuery(hql, Student.class);
+		record.setParameter("sid", id);
+		
+		List<Student> students = record.getResultList();
+		
+		if(students.size()>0)
+			System.out.println(students);
+		else
+			System.out.println("Record Not with found with student id : "+id);
+		
+		session.close();
+//		List<Student> student1 = record.getResultList();
+//		
+//		if(student1.size()>0)
+//			System.out.println(student1);
+//		else
+//			System.out.println("Record Not with found with student id : "+id);
+//		
+////		session.evict(students.get(0));
+//		session.clear();
+//		
+//		List<Student> student2 = record.getResultList();
+//		if(student2.size()>0)
+//			System.out.println(student2);
+//		else
+//			System.out.println("Record Not with found with student id : "+id);
+//		
+//		
+		
+	}
 	public List<Student> getRecords()
 	{
 		Session session = sf.openSession();

@@ -22,6 +22,13 @@ public class App1 {
     		System.out.println("Department id "+s.getDepartment().getDeptid());
     		System.out.println("Department Name : "+s.getDepartment().getDeptname());
     	}
+    	System.out.println("----------------Student by Id first call ----------------");
+    	dao.getRecordById(1);
+    	
+    	System.out.println("----------------Student by Id second call ----------------");
+    	dao.getRecordById(1);
+    	
+    	
     	
 	}
 }
