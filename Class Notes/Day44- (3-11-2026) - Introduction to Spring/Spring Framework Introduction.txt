@@ -54,8 +54,8 @@ Inversion of control
 ------------------
 Inversion of control is a design technique or principal in which the responsibility of creating and managing object is transferred from application code to an external container in framework. 
 Example:-
-Without IOC
 
+Without IOC
 class Engine
 {
 	public void start()

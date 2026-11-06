@@ -1,8 +1,10 @@
 package com.foodordering.payment;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class CashPayment implements Payment {
 
     @Override

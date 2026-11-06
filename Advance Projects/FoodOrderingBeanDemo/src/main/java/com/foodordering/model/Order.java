@@ -25,4 +25,12 @@ public class Order {
 				+"\nFood Name : "+foodName
 				+"\nTotal Amount : "+amount;
 	}
+
+	public void setOrderDetails(int orderId, String customerName, String foodName, double price) {
+		this.orderId = orderId;
+		this.customerName=customerName;
+		this.foodName=foodName;
+		this.amount=price;
+		
+	}
 }

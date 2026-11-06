@@ -1,0 +1,81 @@
+Ambiguity Problem where two class has the same overridden method
+---------------------------
+when more than one child classes are overriding the parent interface/class method, and in a common class by using the parent class/interface object, we are trying to access that overridden method, then which method will be called??
+Because it creates a ambiguity problem??
+At runtime, we will receive an exception  :  NonUniqueBeanDefinitionException
+
+Spring provides two annotations to resolve this issue:-
+1. @Qualifier: it helps us to define the class whose method will be called.
+Existing Problematic Code :
+--------------------------
+    @Autowired
+    private Payment payment;
+
+    public void processPayment(double amount) {
+        payment.pay(amount);
+    }
+To resolve this problem :-
+class PaymentService
+{
+   private Payment payment;
+
+   public PaymentService(@Qualifier("onlinePayment")Payment payment)
+   {
+	this.payment = payment;
+   }
+
+     public void processPayment(double amount) {
+        payment.pay(amount);
+    }
+}
+
+2. @Primary  :  the ambiguity problem can also be resolved using the @Primary annotation. 
+
+Existing Problematic Code :
+--------------------------
+    @Autowired
+    private Payment payment;
+
+    public void processPayment(double amount) {
+        payment.pay(amount);
+    }
+Resolved code
+-------------
+Existing Problematic Code :
+--------------------------
+    @Autowired
+    private Payment payment;
+
+    public void processPayment(double amount) {
+        payment.pay(amount);
+    }
+There will be no change here. but we will add the @Primary annotation in the Primary class. For example we want to set the CashPayment class as the primary class
+
+@Component
+@Primary
+public class CashPayment implements Payment {
+
+    @Override
+    public void pay(double amount)
+    {
+        System.out.println(
+            "Cash payment received: Rs. " + amount);
+    }
+}  
+
+-------------------------------------
+In Bean Project, we need to implement Collection Injection
+We need to send the notification(message) to the user:-
+1. By email
+2. By sms
+
+Interface(Notification)
+         |
+-----------------------
+|			|
+Email class		SMS Notification
+ 
+->  create OrderService(it will use collection injection)
+
+
+
