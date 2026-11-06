@@ -1,0 +1,28 @@
+package com.foodordering.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class Order {
+
+	private int orderId;
+	private String customerName;
+	private String foodName;
+	private double amount;
+	
+	@Override
+	public String toString() 
+	{
+		return "Order Id : "+orderId
+				+"\nCustomer Name : "+customerName
+				+"\nFood Name : "+foodName
+				+"\nTotal Amount : "+amount;
+	}
+}

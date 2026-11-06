@@ -1,0 +1,128 @@
+Spring Bean
+------------
+Spring Bean is an object that is created, configured, and managed by the Spring IoC  container. In normal java, we create objects using the new keyword.
+
+Spring bean is an object that is instantiated, managed, manipulated by spring container.
+Usually we create object using new keyword but in Spring framework, as all the objects are managed by spring container, so we usually create/manage objects using spring ioc, so we just need to initialize either BeanFactory or ApplicationContext to get the object from the spring container.
+
+=> BeanFactory : it is an interface of Spring Framework. It is the root interface for accessing the spring container. It provides fundamental IoC features. It uses lazy loading means that beans are instantiated only when requested with getBean() method.  It has the lightest footprint, useful for resource-constrained environments.
+
+=> ApplicationContext : it is also an interface which extends the BeanFactory interface.
+It provides enhanced and advanced features for Spring IoC. It also supports Eager loading which means singleton beans are instantiated on application startup.
+It supports internationalization which means that it provides message source. It also provides publication mechanism. it also helps to create web applications. For this it provides WebApplicationCotext
+
+Bean Scopes
+-----------
+1. Singleton(Default) -  there is only one instance of the bean per spring ioc container. It is shared across the entire application.
+It can run in any environment.
+ 
+2. Prototype :  a new instance is created every time the bean is requested from the container. It can also run in any environment.
+
+3. Request : an object which is requested by a request for one time in HTTP request lifecycle.
+These objects are alive only in a request. it is only active in web-aware environment.
+
+4. Session :  objects which are created inside a session are usually created once an is alive during its lifecycle. it also comes under web-aware environment.
+5. Application : A single instance per ServletContext. it is also web-aware environment
+6. WebSocket : A single instance per web socket lifecycle.
+
+Bean Configuration
+------------------
+1. Java based configuration : we use @Configuration & @Bean to define a java based configuration. We explicitely define the java classes and they  are ideal for third-party libraries or custom setup.
+
+Syntax of Bean
+---------------
+
+@Configuration
+public class AppConfig
+{
+	@Bean
+	public classname mehodname()
+	{
+		return ob;
+	}
+
+	@Bean
+	public UserService userService(UserRepository userRep)
+	{
+		return new UserServiceImpl(userRep);
+	}
+}
+2. Annotation-Based : Spring automatically detects classes which are annotated with @Component during  a classpath scan with configured @ComponentScan.
+Some other annotations are:-
+1. @Component :  Generic Stereotype for any spring managed component.
+2. @Service :  it is specialized service layer class which holds the business logic. 
+3. @Repository : it is specialized for data access objects. It translates database/orm exceptions into spring's DataAccessException hierarchy. 
+4. @Controller / @RestController :  it is specialized for presentation layer(Spring MVC or Rest Endpoints)  
+
+-----------------------------------------
+Dependency Injection
+---------------------
+It is a design pattern where an object or function receives another object it needs(called dependencies) from external resource rather than creating them itself.
+Dependency injection can be applied using these 3 ways:-
+1. Setter Injection :  the value of variables(attribute) are initialized using the setter methods.  
+2. constructor Injection: the value of variables(attribute) are initialized using the Constructors. 
+3. Field Injection :  values are initialized using the fields, like we use @Autowired directly on fields.
+
+------------------------------------
+@Primary  :  it is used to mark one implementation as the default choice.
+
+Example
+@Component
+@Primary
+public class SqlUserRepository implements UserRepository
+{
+
+}
+=>  @Qualifier : it specifies the exact bean name to inject at the injection point.
+
+--------------------------------------------
+Bean Lifecycle :
+
+[ 1. Bean Definition Loaded ]
+                  │
+                  ▼
+   [ 2. Bean Instantiation (Constructor) ]
+                  │
+                  ▼
+   [ 3. Populate Properties / Dependency Injection ]
+                  │
+                  ▼
+   [ 4. Aware Interfaces Called (e.g., BeanNameAware, ApplicationContextAware) ]
+                  │
+                  ▼
+   [ 5. BeanPostProcessor: postProcessBeforeInitialization() ]
+                  │
+                  ▼
+   [ 6. Initialization Phase ]
+       ├── @PostConstruct method
+       ├── InitializingBean's afterPropertiesSet()
+       └── Custom init-method defined in @Bean(initMethod=...)
+                  │
+                  ▼
+   [ 7. BeanPostProcessor: postProcessAfterInitialization() ] ──► (Proxy created if AOP used)
+                  │
+                  ▼
+   [ 8. Bean Ready for Use ]
+                  │
+                  ▼
+   [ 9. Destruction Phase (Container Shutdown) ]
+       ├── @PreDestroy method
+       ├── DisposableBean's destroy()
+       └── Custom destroy-method defined in @Bean(destroyMethod=...)
+
+
+Example:
+@Service
+public class OrderService
+{
+	private final PaymentProcessor processor;
+	
+	public OrderService(@Qualifier("stripePaymentProcessor")PaymentProcessor processor)
+	{
+		this.processor = processor;
+	}
+}
+
+--------------------------------------------------
+
+

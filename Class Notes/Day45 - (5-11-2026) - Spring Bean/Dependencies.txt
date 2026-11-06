@@ -1,0 +1,22 @@
+<dependencies>
+    		<!-- Source: https://mvnrepository.com/artifact/org.springframework/spring-context -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>6.2.19</version>
+		</dependency>
+		<!-- Source: https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.34</version>
+</dependency>
+
+=> Add one more dependency :   jakarta-annotation (jakarta-annotation-api)
+<!-- Source: https://mvnrepository.com/artifact/jakarta.annotation/jakarta.annotation-api -->
+<dependency>
+    <groupId>jakarta.annotation</groupId>
+    <artifactId>jakarta.annotation-api</artifactId>
+    <version>2.1.1</version>
+    <scope>compile</scope>
+</dependency>
