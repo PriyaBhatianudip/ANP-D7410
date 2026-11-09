@@ -1,0 +1,94 @@
+Spring Bean
+------------
+Spring Bean is an object that is created, configured, and managed by the Spring IoC  container. In normal java, we create objects using the new keyword.
+
+class demo
+{
+	demo(int a, int b)
+	{
+
+	}
+	methods
+}
+
+class B
+{
+	demo d=new demo(33,77);
+}
+class C
+{
+	demo d=new demo(35,89);
+
+}
+
+class demo
+{
+	demo(int a, int b, String d)
+	{
+
+	}
+	methods
+}
+
+class B
+{
+	@Autowired
+	demo d;
+}
+class C
+{
+	@Autowired
+	demo d;
+
+}
+-------------------------------
+@Component
+It is an inbuilt annotation of spring framework
+The class should be managed by Spring IoC container. it helps in creating object of a class and maintain as spring bean.
+
+In simple java program:-
+public class StudentService
+{
+	public void showDetails()
+	{
+		System.out.println("Hello Java");
+	}
+}
+
+public class User
+{
+	public static void main(String args[])
+	{
+		StudentService service = new StudentService();
+		service.showDetails();
+	}
+}
+using @Component
+
+@Component
+public class StudentService
+{
+	public void showDetails()
+	{
+		System.out.println("Hello Java");
+	}
+}
+
+Now Spring container will automatically create and manage the StudentService Object.
+
+@Configuration
+@ComponentScan(basePackage ="package.subpackage")
+public class User
+{
+	public static void main(String args[])
+	{
+		AnnotationConfigApplicationContext context =
+				new AnnotationConfigApplicationContext(User.class);
+		StudentService service = context.getBean(StudentService.class);
+
+service.showDetails();
+context.close();
+
+		service.showDetails();
+	}
+}
