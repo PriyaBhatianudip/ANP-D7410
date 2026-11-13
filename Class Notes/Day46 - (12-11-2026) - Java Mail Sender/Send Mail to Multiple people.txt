@@ -1,0 +1,24 @@
+Send Mail to Multiple people/Bulk mail
+--------------------------------------
+=> setTo():  it is used to send mail to multiple people at the same time. It is an inbuilt method of Java Mail Sender under the SimpleMailMessage class. 
+
+Syntax:
+SimpleMailMessage message = new SimpleMailMessage();
+message.setTo("emailid", "emailid",......);
+
+=>setSubject():  it is used to set the subject line of mail.
+message.setSubject("subject line");
+
+=> setText(): it is used to write/set the email message of the user. 
+message.setText("Dear Sir,\nI hope you are doing well. \n thiskkkkkkkk");
+
+=> mailSender.send(message)  :  it is used to finally send the mail. 
+--------------------------------------------------------
+To add attachments:-
+When adding the attachments, we create the object of MimeMessageHelper to send emails instead of SimpleMailMessage.
+=> create object of MimeMessageHelper and use it to set To, subject and text body. 
+=> create a file object which contains the absolute path of the file.
+=> use addAttachment to add an attachment file with the mail.
+Syntax:  ob.addAttachment("filename.extension", fileob);
+=> use the send() method to send the mail.
+----------------------------------------------------------

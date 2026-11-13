@@ -1,0 +1,15 @@
+JAR/WAR
+--------
+Both are compressed archive file formats just like zip format in windows. 
+
+JAR(Java Archive) : it is a package file format used to aggregate many java .class files, metadata and associated resources into a single file
+
+WAR(Web Application Archive):  it is a special type of JAR used mainly for packaging and distributing web applications.
+---------------------------------------
+1. create a spring starter project/ go to spring initializer and creae an sts project.
+2. add dependencies
+3. add properties in src/main/resources/application.properties file.
+3.1 : create system user level passwords and use them to get id and password in your application.
+
+4. create entity and service classes.
+5. generate an app password.

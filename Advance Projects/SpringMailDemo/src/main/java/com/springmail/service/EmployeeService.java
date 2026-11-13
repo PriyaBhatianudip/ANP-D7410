@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.springmail.entity.Employee;
 import com.springmail.repository.EmployeeRepository;
 
+import jakarta.mail.MessagingException;
+
 @Service
 public class EmployeeService {
 
@@ -24,13 +26,16 @@ public class EmployeeService {
 
         try {
         	System.out.println("Sending mail to new employee...");
-            emailService.sendWelcomeEmail(
+            emailService.sendWelcomeEmailAttachment(
                     savedEmployee.getName(),
                     savedEmployee.getEmail());
         }
         catch (MailException e) {
             System.out.println("Welcome email failed: " + e.getMessage());
-        }
+        } catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         return savedEmployee;
     }
