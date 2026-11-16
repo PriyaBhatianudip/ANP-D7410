@@ -1,0 +1,16 @@
+Extract data from an excel file and use this data to send emails to multiple people in spring/spring boot
+-----------------------------------------------------------------
+Multipart :  it is used whenever we need to perform any read/write operations in word/excel/text/csv files.
+->  MultipartFile :  it is an inbuilt class of java, which helps to store the filename in a proper format.
+-> Workbook :  workbook class is an inbuilt class of java, which stores the object of the excel file. 
+-> Sheet :  it's object is used to store the reference of a particular sheet of the workbook.
+->  Row :  it's object is used to store the value of a row.
+->  DataFormatter :  this class helps us to keep the excel format in java for the given data.
+
+
+
+
+-> to work with an excel/word file, we need to add the dependency of apache.poi
+->  Create an entity class to receive data from the excel file.
+-> create an excel service class
+ ->  create methods  ->> read Excel data 

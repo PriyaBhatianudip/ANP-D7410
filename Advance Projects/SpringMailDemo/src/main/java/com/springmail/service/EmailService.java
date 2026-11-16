@@ -11,8 +11,10 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.springmail.entity.Employee;
+import com.springmail.entity.Recipient;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -25,6 +27,10 @@ public class EmailService {
 
     @Value("${spring.mail.username}")
     private String senderEmail;
+    
+    @Autowired
+    private ExcelService excelService;
+    
 
     public void sendEmail(String to, String subject, String body) {
 
@@ -67,7 +73,8 @@ public class EmailService {
         
         MimeMessage mm = mailSender.createMimeMessage(); 
         
-        MimeMessageHelper message = new MimeMessageHelper(mm,true);
+        MimeMessageHelper message = 
+        		new MimeMessageHelper(mm,true);
         message.setTo(email);
         message.setSubject(subject);
         message.setText(body);
@@ -119,8 +126,27 @@ public class EmailService {
     	message.setText("Welcome to Information Panel!!");
     	
     	mailSender.send(message);
-    	System.out.println("Mail Sent Successfully!!");
-    	
-    	
+    	System.out.println("Mail Sent Successfully!!");   	
+    }
+    
+    
+    public String sendMailsUsingExcelData(MultipartFile file)
+    {
+    	String msg="Sent Mail Successfully to ";
+    	try 
+    	{
+			List<Recipient> recipients = 
+					excelService.readExcelFile(file);
+		
+			for(Recipient r : recipients)
+			{
+				sendWelcomeEmail(r.getName(), r.getEmail());
+				msg+="\n->"+r.getEmail();
+			}
+    	} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return msg;
     }
 }

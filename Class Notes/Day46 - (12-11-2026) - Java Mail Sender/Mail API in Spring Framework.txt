@@ -1,0 +1,37 @@
+Mail API in Spring Framework
+-----------------------------
+This API is used to send or receive mails using the given service provider. 
+We need to implement Spring Boot Starter Mail to access the Java Mail API.
+It provides us JavaMailSender interface, which provides us methods to access emails using the SMTP server.
+client ->  SMTP server -> recipient
+Dependencies needed:-
+spring-boot-starter-mail
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-mail</artifactId>
+</dependency>
+
+=>  We need to setup some properties for mail api :-
+spring.application.name = ApplicationName
+
+spring.mail.host = smtp.gmail.com
+spring.mail.port = 587
+spring.mail.username = username
+spring.mail.password =  app password
+
+spring.mail.properties.mail.smtp.auth = true
+spring.mail.properties.mail.smtp.starttls.enable= true
+
+-------------------------------------------------
+How to generate App password:-
+to generate the app password, we are required to login into our mail account and go to the settings.
+there you will find the option to set an app password.
+-----------------------------------
+=> To use the sensitive information, always store them at window level using the command prompt.
+->  open cmd
+-> set up the system variables:-
+	setx MAIL_USERNAME "username@gmail.com"
+	setx MAIL_PASSWOORD "app password" 
+
+
+
