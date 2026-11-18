@@ -1,20 +1,20 @@
+
 package com.springmail.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springmail.entity.Employee;
-import com.springmail.entity.Recipient;
+import com.springmail.model.EmailRequest;
 import com.springmail.service.EmailService;
 import com.springmail.service.EmployeeService;
-import com.springmail.service.ExcelService;
 
-//http://abc.com/folder/universal-url/methodurl
-
-@RestController
+@Controller
 @RequestMapping("/email")
 public class EmailController {
 
@@ -23,40 +23,95 @@ public class EmailController {
 
     @Autowired
     private EmployeeService empService;
-   
-    
+
+    // Display email form
+    @GetMapping({"", "/"})
+    public String showEmailForm(Model model) {
+
+        model.addAttribute(
+            "emailRequest",
+            new EmailRequest()
+        );
+
+        return "email-form";
+    }
+
+    // Send email
     @PostMapping("/send")
     public String sendEmail(
-            @RequestParam String to,
-            @RequestParam String subject,
-            @RequestParam String body) {
+            @ModelAttribute("emailRequest")
+            EmailRequest request,
+            Model model) {
 
-        emailService.sendEmail(to, subject, body);
+        try {
 
-        return "Email sent successfully!";
+            emailService.sendEmail(request);
+
+            model.addAttribute(
+                "success",
+                "Email sent successfully!"
+            );
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            model.addAttribute(
+                "error",
+                "Unable to send email: " + e.getMessage()
+            );
+        }
+
+        model.addAttribute(
+            "emailRequest",
+            new EmailRequest()
+        );
+
+        return "email-form";
     }
-    
+
+    // Send emails to all employees
     @PostMapping("/sendMails")
-    public String sendEmails()
-    {
-    	List<Employee> emplist = empService.getAllEmployees();
-    	
-    	emailService.sendMails(emplist);
-    	
-    	return "Mails sent Successfully!!";
+    @ResponseBody
+    public String sendEmails() {
+
+        try {
+
+            List<Employee> emplist =
+                empService.getAllEmployees();
+
+            emailService.sendMails(emplist);
+
+            return "Mails sent successfully!";
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return "Unable to send mails: "
+                    + e.getMessage();
+        }
     }
-    
+
+    // Send emails using Excel data
     @PostMapping("/sendMailsexcel")
-    public String sendEmailstoMultiple(@RequestParam("file") MultipartFile file)
-    {
-    	String msg="";
-    	try 
-    	{
-			msg = emailService.sendMailsUsingExcelData(file);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	return "Emails Processed Successfully!!"+msg;
+    @ResponseBody
+    public String sendEmailstoMultiple(
+            @RequestParam("file") MultipartFile file) {
+
+        try {
+
+            String msg =
+                emailService.sendMailsUsingExcelData(file);
+
+            return "Emails processed successfully! " + msg;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return "Unable to process emails: "
+                    + e.getMessage();
+        }
     }
 }

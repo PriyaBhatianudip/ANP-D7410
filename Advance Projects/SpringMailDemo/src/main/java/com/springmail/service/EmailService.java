@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.springmail.entity.Employee;
 import com.springmail.entity.Recipient;
+import com.springmail.model.EmailRequest;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -32,14 +33,14 @@ public class EmailService {
     private ExcelService excelService;
     
 
-    public void sendEmail(String to, String subject, String body) {
+    public void sendEmail(EmailRequest request) {
 
         SimpleMailMessage message = new SimpleMailMessage();
-        System.out.println("Sending mail to "+to);
+        System.out.println("Sending mail to "+request.getTo());
         message.setFrom(senderEmail);
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(body);
+        message.setTo(request.getTo());
+        message.setSubject(request.getSubject());
+        message.setText(request.getMessage());
 
         mailSender.send(message);
         System.out.println("Mail sent successfully!!");
@@ -53,8 +54,9 @@ public class EmailService {
                 + "Welcome to our organization!\n"
                 + "Your employee registration is successful.\n\n"
                 + "Regards,\nHR Department";
-
-        sendEmail(email, subject, body);
+        
+        EmailRequest request = new EmailRequest(email, subject, body);
+        sendEmail(request);
     }
 
     public void sendWelcomeEmailAttachment(String name, String email) 
@@ -91,7 +93,8 @@ public class EmailService {
         String body = "Dear " + name + ",\n\n"
                 + "Your employee details have been updated successfully.";
 
-        sendEmail(email, subject, body);
+        EmailRequest request = new EmailRequest(email, subject, body);
+        sendEmail(request);
     }
     
     

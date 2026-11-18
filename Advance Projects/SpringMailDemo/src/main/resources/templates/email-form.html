@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Mail Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 40px;
+        }
+
+        .container {
+            width: 450px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #087f5b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .success {
+            color: green;
+            margin-bottom: 15px;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Send Email</h2>
+
+    <!-- Success Message -->
+    <p class="success"
+       th:if="${success}"
+       th:text="${success}">
+    </p>
+
+    <!-- Error Message -->
+    <p class="error"
+       th:if="${error}"
+       th:text="${error}">
+    </p>
+
+    <!-- Email Form -->
+    <form th:action="@{/email/send}"
+          th:object="${emailRequest}"
+          method="post">
+
+        <label>Recipient Email:</label>
+
+        <input type="email"
+               th:field="*{to}"
+               placeholder="Enter recipient email"
+               required>
+
+        <br><br>
+
+        <label>Subject:</label>
+
+        <input type="text"
+               th:field="*{subject}"
+               placeholder="Enter subject"
+               required>
+
+        <br><br>
+
+        <label>Message:</label>
+
+        <textarea th:field="*{message}"
+                  rows="6"
+                  placeholder="Enter your message"
+                  required>
+        </textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Send Email
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
