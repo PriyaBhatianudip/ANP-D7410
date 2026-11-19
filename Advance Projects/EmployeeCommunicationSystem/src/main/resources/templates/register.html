@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Employee Registration</title>
+</head>
+
+<body>
+
+    <h2>Employee Registration Form</h2>
+
+    <a th:href="@{/}">Home</a>
+
+    <p style="color:green"
+       th:if="${message}"
+       th:text="${message}">
+    </p>
+
+    <p style="color:red"
+       th:if="${error}"
+       th:text="${error}">
+    </p>
+
+    <form th:action="@{/employee/register}"
+          th:object="${employee}"
+          method="post">
+
+        Employee ID:
+        <input type="text" th:field="*{employeeId}">
+        <span th:errors="*{employeeId}"></span>
+        <br><br>
+
+        Employee Name:
+        <input type="text" th:field="*{employeeName}">
+        <span th:errors="*{employeeName}"></span>
+        <br><br>
+
+        Email:
+        <input type="email" th:field="*{email}">
+        <span th:errors="*{email}"></span>
+        <br><br>
+
+        Department:
+        <input type="text" th:field="*{department}">
+        <span th:errors="*{department}"></span>
+        <br><br>
+
+        Designation:
+        <input type="text" th:field="*{designation}">
+        <span th:errors="*{designation}"></span>
+        <br><br>
+
+        Salary:
+        <input type="number" step="0.01"
+               th:field="*{salary}">
+        <span th:errors="*{salary}"></span>
+        <br><br>
+
+        Joining Date:
+        <input type="date" th:field="*{joiningDate}">
+        <span th:errors="*{joiningDate}"></span>
+        <br><br>
+
+        <button type="submit">Register Employee</button>
+
+    </form>
+
+</body>
+</html>

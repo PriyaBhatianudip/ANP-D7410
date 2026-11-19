@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>OTP Verification</title>
+</head>
+
+<body>
+
+    <h2>Employee Email Verification</h2>
+
+    <p>
+        An OTP has been sent to your registered email address.
+    </p>
+
+    <p style="color:red"
+       th:if="${error}"
+       th:text="${error}">
+    </p>
+
+    <form th:action="@{/employee/verify-otp}"
+          method="post">
+
+        <label>Enter 6 Digit OTP:</label>
+
+        <input type="text"
+               name="otp"
+               maxlength="6"
+               pattern="[0-9]{6}"
+               required>
+
+        <br><br>
+
+        <button type="submit">
+            Verify OTP
+        </button>
+
+    </form>
+
+</body>
+</html>
